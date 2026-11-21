@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kembara Pelita Hamba – P1 Surah al-An'am 162-163</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFF8E7; --ink:#1B2A3A; --teal:#0E7C6B; --teal2:#12A38C; --gold:#F2A900; --gold2:#FFD45C;
+  --red:#E0473C; --green:#22A55A; --blue:#2D6CDF; --purple:#7B4FD6; --card:#FFFFFF; --muted:#5B6B7B;
+  --shadow:0 6px 0 rgba(0,0,0,.12), 0 12px 24px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{
+  font-family:'Baloo 2',system-ui,sans-serif; color:var(--ink); font-size:22px; line-height:1.35;
+  background:
+    radial-gradient(circle at 10% 10%, #FFE9B3 0, transparent 35%),
+    radial-gradient(circle at 90% 20%, #D5F5EE 0, transparent 40%),
+    radial-gradient(circle at 50% 100%, #FFE0D6 0, transparent 45%), var(--bg);
+  min-height:100vh; overflow-x:hidden;
+}
+.ar{font-family:'Amiri Quran','Amiri',serif; direction:rtl; line-height:2.1}
+button{font-family:inherit;cursor:pointer;border:none}
+.wrap{max-width:1100px;margin:0 auto;padding:18px 18px 60px}
+.screen{display:none;animation:pop .35s ease}
+.screen.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+
+/* HUD */
+.hud{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  background:var(--card);border-radius:22px;padding:10px 16px;box-shadow:var(--shadow);margin-bottom:18px;border:3px solid #F0E2BF}
+.hud .chip{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.05rem;background:#FFF3D1;border-radius:14px;padding:6px 14px}
+.hud .chip.t{background:#DDF6F1;color:var(--teal)}
+.iconbtn{background:#EEF2F6;border-radius:14px;padding:8px 14px;font-size:1.05rem;font-weight:700;color:var(--ink)}
+.iconbtn:hover{background:#E2E8EF}
+
+/* Big buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:1.35rem;font-weight:800;
+  padding:14px 30px;border-radius:20px;color:#fff;background:var(--teal);box-shadow:0 7px 0 #075B4E;transition:transform .1s, box-shadow .1s;min-height:64px}
+.btn:active{transform:translateY(5px);box-shadow:0 2px 0 #075B4E}
+.btn.gold{background:var(--gold);color:#3A2600;box-shadow:0 7px 0 #B07B00}
+.btn.gold:active{box-shadow:0 2px 0 #B07B00}
+.btn.ghost{background:#fff;color:var(--teal);box-shadow:0 7px 0 #CFE3DF;border:3px solid var(--teal)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+
+/* Title */
+.title-card{text-align:center;background:var(--card);border-radius:34px;padding:30px 22px;box-shadow:var(--shadow);border:4px solid #F0E2BF;position:relative;overflow:hidden}
+.title-card h1{font-size:clamp(2.2rem,6vw,3.8rem);margin:.1em 0;line-height:1.05;color:var(--teal)}
+.title-card h1 span{color:var(--gold);text-shadow:0 3px 0 #B07B00}
+.title-card .sub{font-size:1.35rem;color:var(--muted);font-weight:700}
+.title-card .ayah{font-size:clamp(2rem,4.8vw,3rem);color:var(--ink);margin:10px 0}
+.lanterns{font-size:3rem;letter-spacing:10px;filter:drop-shadow(0 4px 6px rgba(242,169,0,.5))}
+.field{margin:20px auto 6px;max-width:520px;text-align:left}
+.field label{font-weight:800;font-size:1.2rem}
+.field input{width:100%;font-size:1.5rem;font-family:inherit;padding:12px 18px;border-radius:16px;border:3px solid #CFD8E3;margin-top:6px;font-weight:700}
+.field input:focus{outline:none;border-color:var(--teal)}
+.diffs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px auto;max-width:860px}
+.diff{background:#fff;border:4px solid #E3E8EE;border-radius:22px;padding:14px 10px;text-align:center;font-weight:800;font-size:1.2rem;color:var(--ink);box-shadow:0 5px 0 #E3E8EE}
+.diff .em{font-size:2.4rem;display:block}
+.diff small{display:block;font-weight:600;color:var(--muted);font-size:.95rem;line-height:1.25}
+.diff.sel{border-color:var(--teal);background:#E7FAF6;box-shadow:0 5px 0 var(--teal)}
+@media(max-width:640px){.diffs{grid-template-columns:1fr}}
+
+/* Map */
+.map{position:relative;background:linear-gradient(180deg,#E9FBF7,#FFF5DA);border-radius:34px;box-shadow:var(--shadow);border:4px solid #F0E2BF;padding:20px;min-height:560px;overflow:hidden}
+.map h2{text-align:center;margin:0 0 4px;font-size:2rem;color:var(--teal)}
+.map .hint{text-align:center;color:var(--muted);font-weight:700;margin:0 0 8px}
+.map svg.path{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.nodes{position:relative;height:470px}
+.node{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px;background:none;color:var(--ink);width:170px}
+.node .orb{width:104px;height:104px;border-radius:50%;display:grid;place-items:center;font-size:3rem;background:#fff;border:5px solid #CBD5E1;box-shadow:0 6px 0 #CBD5E1;transition:transform .2s}
+.node:hover .orb{transform:scale(1.07)}
+.node.open .orb{border-color:var(--gold);box-shadow:0 6px 0 #B07B00, 0 0 0 10px rgba(242,169,0,.18);animation:breathe 2s infinite}
+.node.done .orb{border-color:var(--teal);box-shadow:0 6px 0 #075B4E, 0 0 30px 8px rgba(255,212,92,.85);background:radial-gradient(circle,#FFF4C2,#FFD45C)}
+.node.lock{opacity:.55;cursor:not-allowed}
+.node .nm{font-weight:800;font-size:1.05rem;background:#fff;padding:2px 12px;border-radius:12px;box-shadow:0 3px 0 rgba(0,0,0,.08);text-align:center;line-height:1.2}
+.node .st{font-size:1.25rem;letter-spacing:2px;color:var(--gold);text-shadow:0 2px 0 #B07B00;min-height:1.4em}
+@keyframes breathe{50%{box-shadow:0 6px 0 #B07B00, 0 0 0 18px rgba(242,169,0,.08)}}
+.mapbar{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+
+/* Panels */
+.panel{background:var(--card);border-radius:30px;box-shadow:var(--shadow);border:4px solid #F0E2BF;padding:24px}
+.panel h2{margin:0 0 6px;font-size:2rem;color:var(--teal)}
+.lvhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.lvhead .tag{background:var(--teal);color:#fff;border-radius:14px;padding:4px 14px;font-weight:800}
+.prog{flex:1;min-width:160px;height:20px;background:#EEF2F6;border-radius:12px;overflow:hidden}
+.prog>i{display:block;height:100%;background:linear-gradient(90deg,var(--teal2),var(--gold));width:0;transition:width .3s}
+.timer{height:16px;border-radius:10px;background:#EEF2F6;overflow:hidden;margin:6px 0 14px}
+.timer>i{display:block;height:100%;background:var(--green);width:100%}
+.timer.warn>i{background:var(--red)}
+.combo{font-weight:800;color:#C2410C;font-size:1.2rem}
+.lives{font-size:1.6rem;letter-spacing:3px}
+
+/* Level 1 */
+.target{direction:rtl;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;min-height:110px;padding:14px;border-radius:22px;background:#F2FBF9;border:3px dashed var(--teal2);margin:10px 0 18px}
+.slot{min-width:80px;min-height:78px;border-radius:16px;border:3px dashed #A7D9CF;display:grid;place-items:center;padding:0 10px}
+.slot.fill{border:3px solid var(--teal);background:#fff;animation:pop .25s}
+.pool{direction:rtl;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.tile{font-family:'Amiri Quran','Amiri',serif;font-size:clamp(1.8rem,4vw,2.6rem);background:#fff;color:var(--ink);border:3px solid #E3D6B3;border-radius:18px;padding:4px 18px;box-shadow:0 6px 0 #E3D6B3;min-height:78px;line-height:1.9}
+.tile:active{transform:translateY(4px);box-shadow:0 2px 0 #E3D6B3}
+.tile.used{visibility:hidden}
+.shake{animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.wrongflash{background:#FFE1DE!important;border-color:var(--red)!important}
+.meaning{background:#FFF3D1;border-radius:18px;padding:14px 18px;font-weight:700;font-size:1.3rem;text-align:center;margin-top:12px}
+
+/* Level 2 memory */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
+.mcard{perspective:900px;min-height:150px;background:none;padding:0}
+.mcard .in{position:relative;width:100%;height:100%;min-height:150px;transition:transform .45s;transform-style:preserve-3d}
+.mcard.flip .in{transform:rotateY(180deg)}
+.mcard .f,.mcard .b{position:absolute;inset:0;border-radius:20px;backface-visibility:hidden;display:grid;place-items:center;padding:8px;box-shadow:0 6px 0 rgba(0,0,0,.12)}
+.mcard .f{background:linear-gradient(135deg,var(--teal),#0B5E52);color:var(--gold2);font-size:3rem;border:4px solid #0B5E52}
+.mcard .b{transform:rotateY(180deg);background:#fff;border:4px solid #E3D6B3;color:var(--ink);text-align:center}
+.mcard .b.ar{font-size:clamp(1.5rem,3vw,2.1rem)}
+.mcard .b.ms{font-size:clamp(1rem,1.9vw,1.2rem);font-weight:800;line-height:1.25}
+.mcard.match .b{background:#E5F8EC;border-color:var(--green);animation:glow 1s}
+@keyframes glow{50%{box-shadow:0 0 0 10px rgba(34,165,90,.25)}}
+
+/* Quiz */
+.qbox{background:#F6F9FC;border-radius:24px;padding:20px;border:3px solid #E3E8EE;margin-bottom:16px;text-align:center}
+.qbox .q{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:800}
+.qbox .qa{font-size:clamp(2rem,5vw,3.2rem);margin-top:8px}
+.blank{display:inline-block;min-width:110px;border-bottom:5px solid var(--gold);margin:0 6px;color:var(--gold)}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.opts{grid-template-columns:1fr}}
+.opt{background:#fff;border:4px solid #DCE3EA;border-radius:20px;padding:14px 18px;font-size:clamp(1.2rem,2.4vw,1.5rem);font-weight:800;color:var(--ink);box-shadow:0 6px 0 #DCE3EA;text-align:left;display:flex;gap:12px;align-items:center;min-height:76px}
+.opt .k{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:1.3rem}
+.opt:nth-child(1) .k{background:var(--blue)}.opt:nth-child(2) .k{background:var(--purple)}.opt:nth-child(3) .k{background:#D9480F}.opt:nth-child(4) .k{background:#0B7285}
+.opt.ar{font-family:'Amiri Quran','Amiri',serif;font-size:clamp(1.8rem,4vw,2.5rem);justify-content:center;font-weight:400}
+.opt.ar .k{font-family:'Baloo 2',sans-serif}
+.opt.ok{background:#E5F8EC;border-color:var(--green);box-shadow:0 6px 0 var(--green)}
+.opt.no{background:#FFE6E3;border-color:var(--red);box-shadow:0 6px 0 var(--red)}
+.opt:disabled{cursor:default}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tf .opt{justify-content:center;font-size:2rem;min-height:110px;color:#fff;border:none}
+.tf .opt.b{background:var(--green);box-shadow:0 8px 0 #157A40}
+.tf .opt.s{background:var(--red);box-shadow:0 8px 0 #A52A21}
+.tf .opt.dim{opacity:.35}
+.tf .opt.ring{outline:6px solid var(--gold);outline-offset:4px}
+.feedback{margin-top:16px;border-radius:20px;padding:14px 18px;font-weight:700;font-size:1.2rem;display:none}
+.feedback.show{display:block;animation:pop .3s}
+.feedback.good{background:#E5F8EC;border:3px solid var(--green)}
+.feedback.bad{background:#FFF0EE;border:3px solid var(--red)}
+.center{text-align:center}
+.mt{margin-top:16px}
+
+/* Result */
+.stars{font-size:4.2rem;letter-spacing:8px}
+.stars span{display:inline-block;color:#D5DCE4;transition:.3s}
+.stars span.on{color:var(--gold);text-shadow:0 4px 0 #B07B00;animation:starpop .5s both}
+@keyframes starpop{0%{transform:scale(0) rotate(-90deg)}70%{transform:scale(1.35)}100%{transform:scale(1)}}
+.bigscore{font-size:3rem;font-weight:800;color:var(--teal)}
+.badge{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FFF3D1,#FFE08A);border:3px solid var(--gold);border-radius:20px;padding:10px 20px;font-weight:800;font-size:1.25rem;margin:8px}
+.badge .e{font-size:2.2rem}
+.badges{display:flex;flex-wrap:wrap;justify-content:center}
+.badge.lock{filter:grayscale(1);opacity:.45}
+
+/* Review */
+.rv{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:700px){.rv{grid-template-columns:1fr}}
+.rv .ar{font-size:2.2rem;text-align:center;background:#F2FBF9;border-radius:16px;padding:4px 10px}
+.rv .ms{font-weight:700;font-size:1.2rem;display:flex;align-items:center;padding:6px 10px}
+.inti{counter-reset:i;list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:700px){.inti{grid-template-columns:1fr}}
+.inti li{background:#FFF8E7;border-left:8px solid var(--gold);border-radius:14px;padding:10px 14px;font-weight:700;font-size:1.15rem}
+.inti li::before{counter-increment:i;content:counter(i)". ";color:var(--teal);font-weight:800}
+
+/* Certificate */
+.cert{background:#fff;border-radius:30px;padding:30px;text-align:center;border:10px double var(--gold);box-shadow:var(--shadow);position:relative}
+.cert h2{font-size:2.6rem;color:var(--teal);margin:0}
+.cert .nm{font-size:clamp(2rem,6vw,3.4rem);font-weight:800;color:var(--ink);border-bottom:4px dotted var(--gold);display:inline-block;padding:0 20px;margin:8px 0}
+.cert .rank{font-size:1.8rem;font-weight:800;color:#B07B00}
+.lb{width:100%;border-collapse:collapse;font-size:1.15rem;margin-top:10px}
+.lb th,.lb td{padding:8px;border-bottom:2px solid #EEF2F6;text-align:left}
+.lb th{color:var(--muted)}
+
+/* overlay toast */
+.toast{position:fixed;left:50%;top:22%;transform:translate(-50%,-50%) scale(.6);font-size:clamp(2.4rem,7vw,4.4rem);font-weight:800;pointer-events:none;opacity:0;z-index:50;text-shadow:0 4px 0 rgba(0,0,0,.15);white-space:nowrap}
+.toast.go{animation:toast 1s ease forwards}
+@keyframes toast{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}70%{opacity:1;transform:translate(-50%,-60%) scale(1)}100%{opacity:0;transform:translate(-50%,-90%) scale(.9)}}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
+.modal{position:fixed;inset:0;background:rgba(15,30,40,.55);display:none;place-items:center;z-index:40;padding:16px}
+.modal.on{display:grid}
+.pw{text-align:center;margin-top:28px;font-weight:800;font-size:1.15rem;color:var(--teal);letter-spacing:.5px;opacity:.85}
+.modal .panel{max-width:820px;width:100%;max-height:90vh;overflow:auto}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div class="toast" id="toast"></div>
+
+<div class="wrap">
+  <!-- HUD -->
+  <div class="hud" id="hud" style="display:none">
+    <div class="chip">👤 <span id="hName">-</span></div>
+    <div class="chip t" id="hDiff">-</div>
+    <div class="chip">⭐ <span id="hStars">0</span>/15</div>
+    <div class="chip">🏆 <span id="hScore">0</span></div>
+    <div style="display:flex;gap:8px">
+      <button class="iconbtn" id="sndBtn" title="Bunyi">🔊</button>
+      <button class="iconbtn" id="homeBtn">🗺️ Peta</button>
+    </div>
+  </div>
+
+  <!-- START -->
+  <section class="screen on" id="sStart">
+    <div class="title-card">
+      <div class="lanterns">🏮🏮🏮🏮🏮</div>
+      <div class="sub">Pendidikan Islam Tingkatan 4 · Bidang al-Quran · Pelajaran 1</div>
+      <h1>Kembara <span>Pelita</span> Hamba</h1>
+      <div class="ar ayah">قُلْ إِنَّ صَلَاتِي وَنُسُكِي وَمَحْيَايَ وَمَمَاتِي لِلَّهِ رَبِّ الْعَالَمِينَ</div>
+      <div class="sub">Surah al-An'am, ayat 162–163 · Nyalakan 5 pelita untuk menjadi <b style="color:var(--teal)">Hamba Ikhlas</b>!</div>
+      <div class="field">
+        <label for="nameIn">✍️ Nama pemain / kumpulan</label>
+        <input id="nameIn" maxlength="24" placeholder="Contoh: Aisyah 4 Ibnu Sina">
+      </div>
+      <div class="diffs" id="diffs">
+        <button class="diff" data-d="H"><span class="em">🌱</span>Level 1<small>Masa panjang · susun mengikut potongan ayat</small></button>
+        <button class="diff sel" data-d="S"><span class="em">🌿</span>Level 2<small>Masa sederhana · susun kalimah · markah ×1.5</small></button>
+        <button class="diff" data-d="C"><span class="em">🌳</span>Level 3<small>Masa singkat · ada kalimah pengeliru · markah ×2</small></button>
+      </div>
+      <button class="btn gold" id="startBtn">▶ MULA KEMBARA</button>
+      <div class="mt"><button class="btn ghost" id="resumeBtn" style="display:none">↻ Sambung permainan lama</button></div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="screen" id="sMap">
+    <div class="map">
+      <h2>🗺️ Peta Kembara Pelita</h2>
+      <p class="hint">Sentuh pelita yang bercahaya untuk bermula. Dapat sekurang-kurangnya ⭐ untuk buka pelita seterusnya.</p>
+      <svg class="path" viewBox="0 0 1000 600" preserveAspectRatio="none">
+        <path d="M120 470 C 260 470, 260 300, 330 300 S 470 470, 520 470 S 640 170, 690 200 S 880 360, 880 160" fill="none" stroke="#F2A900" stroke-width="14" stroke-linecap="round" stroke-dasharray="4 26" opacity=".7"/>
+      </svg>
+      <div class="nodes" id="nodes"></div>
+    </div>
+    <div class="mapbar">
+      <button class="btn ghost" id="reviewBtn">📖 Ulang Kaji Ayat</button>
+      <button class="btn gold" id="certBtn" style="display:none">🎖️ Lihat Sijil</button>
+      <button class="btn ghost" id="lbBtn">🏅 Papan Juara</button>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="screen" id="sIntro">
+    <div class="panel center">
+      <div style="font-size:4.5rem" id="iEmoji">🏮</div>
+      <h2 id="iTitle">-</h2>
+      <p style="font-size:1.35rem;font-weight:700;max-width:760px;margin:8px auto" id="iDesc">-</p>
+      <div class="meaning" id="iRule" style="max-width:760px;margin:12px auto">-</div>
+      <div class="mt" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn ghost" onclick="go('sMap')">◀ Kembali</button>
+        <button class="btn gold" id="iGo">▶ MULA!</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLAY -->
+  <section class="screen" id="sPlay">
+    <div class="panel" id="play"></div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="sResult">
+    <div class="panel center">
+      <h2 id="rTitle">Pelita Menyala!</h2>
+      <div class="stars" id="rStars"><span>★</span><span>★</span><span>★</span></div>
+      <div class="bigscore">+<span id="rScore">0</span> markah</div>
+      <p style="font-weight:700;font-size:1.25rem" id="rAcc">-</p>
+      <div class="badges" id="rBadge"></div>
+      <p class="meaning" id="rMsg" style="max-width:760px;margin:12px auto">-</p>
+      <div class="mt" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn ghost" id="rRetry">↻ Cuba Lagi</button>
+        <button class="btn gold" id="rNext">🗺️ Ke Peta</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERT -->
+  <section class="screen" id="sCert">
+    <div class="cert">
+      <div class="lanterns">🏮🏮🏮🏮🏮</div>
+      <h2>SIJIL HAMBA IKHLAS</h2>
+      <p style="font-size:1.3rem;font-weight:700;margin:6px 0">Dengan ini diakui bahawa</p>
+      <div class="nm" id="cName">-</div>
+      <p style="font-size:1.3rem;font-weight:700">telah menyalakan kelima-lima pelita<br>Pelajaran 1: Surah al-An'am, ayat 162–163</p>
+      <div class="rank" id="cRank">-</div>
+      <div class="stars" id="cStars" style="font-size:3rem"></div>
+      <div class="bigscore"><span id="cScore">0</span> markah</div>
+      <div class="badges" id="cBadges"></div>
+      <div class="ar" style="font-size:2rem;margin-top:8px">اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ</div>
+      <p style="font-weight:700;color:var(--muted)">“Ya Allah, bantulah aku untuk mengingati-Mu, mensyukuri-Mu dan beribadat kepada-Mu dengan baik.” (Riwayat Abu Daud)</p>
+      <div class="mt" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn ghost" onclick="go('sMap')">🗺️ Ke Peta</button>
+        <button class="btn gold" id="newGame">🔁 Pemain Baharu</button>
+      </div>
+    </div>
+  </section>
+  <footer class="pw">@powered by alfaqih</footer>
+</div>
+
+<!-- Review modal -->
+<div class="modal" id="mReview"><div class="panel">
+  <div class="lvhead"><h2>📖 Ulang Kaji: Surah al-An'am 162–163</h2><button class="iconbtn" onclick="closeM('mReview')">✖ Tutup</button></div>
+  <div class="rv" id="rvList"></div>
+  <h2 class="mt" style="font-size:1.6rem">💡 Inti Sari Ayat</h2>
+  <ol class="inti" id="intiList"></ol>
+  <h2 class="mt" style="font-size:1.6rem">🔭 Spektrum Ilmu</h2>
+  <p style="font-weight:700">• Sunat membaca <b>doa iftitah</b> dalam solat. Saidina <b>Ali bin Abu Talib</b> meriwayatkan bahawa Rasulullah ﷺ membaca doa yang mengandungi ayat ini apabila berdiri untuk solat (Riwayat Muslim).<br>
+  • <b>Ibnu Umar</b> meriwayatkan seorang sahabat mengucapkan <span class="ar" style="font-size:1.4rem">اللهُ أَكْبَرُ كَبِيرًا، وَالْحَمْدُ لِلَّهِ كَثِيرًا، وَسُبْحَانَ اللهِ بُكْرَةً وَأَصِيلًا</span> lalu Rasulullah ﷺ bersabda: “Pintu-pintu langit dibuka kerana kalimah itu.” Ibnu Umar tidak pernah meninggalkannya sejak itu (Riwayat Muslim).</p>
+  <h2 class="mt" style="font-size:1.6rem">🤲 Amalan</h2>
+  <p style="font-weight:700">Doa supaya ditetapkan iman: <span class="ar" style="font-size:1.6rem">اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ</span><br>“Ya Allah, bantulah aku untuk mengingati-Mu, mensyukuri-Mu dan beribadat kepada-Mu dengan baik.” (Riwayat Abu Daud)</p>
+</div></div>
+
+<!-- Leaderboard modal -->
+<div class="modal" id="mLb"><div class="panel">
+  <div class="lvhead"><h2>🏅 Papan Juara (peranti ini)</h2><button class="iconbtn" onclick="closeM('mLb')">✖ Tutup</button></div>
+  <table class="lb"><thead><tr><th>#</th><th>Nama</th><th>Level</th><th>⭐</th><th>Markah</th></tr></thead><tbody id="lbBody"></tbody></table>
+  <p style="color:var(--muted);font-weight:600">Papan juara disimpan dalam pelayar peranti ini sahaja.</p>
+</div></div>
+
+<script>
+/* ================== KANDUNGAN (Buku Teks PI Tingkatan 4, Pelajaran 1) ================== */
+const POT = [
+  {ar:'قُلْ إِنَّ صَلَاتِي وَنُسُكِي', ms:'Katakanlah: Sesungguhnya solatku dan ibadatku', ay:162},
+  {ar:'وَمَحْيَايَ وَمَمَاتِي', ms:'hidupku dan matiku', ay:162},
+  {ar:'لِلَّهِ رَبِّ الْعَالَمِينَ', ms:'hanyalah untuk Allah, Tuhan yang mentadbir sekalian alam', ay:162},
+  {ar:'لَا شَرِيكَ لَهُ', ms:'Tiadalah sekutu bagi-Nya', ay:163},
+  {ar:'وَبِذَٰلِكَ أُمِرْتُ', ms:'dan dengan yang demikian sahaja aku diperintahkan', ay:163},
+  {ar:'وَأَنَا أَوَّلُ الْمُسْلِمِينَ', ms:'dan aku ialah orang Islam yang awal pertama berserah diri kepada Allah', ay:163},
+];
+const AYAT = {
+  162:{words:['قُلْ','إِنَّ','صَلَاتِي','وَنُسُكِي','وَمَحْيَايَ','وَمَمَاتِي','لِلَّهِ','رَبِّ','الْعَالَمِينَ'], decoy:['وَصِيَامِي','لِلنَّاسِ'],
+       ms:'Katakanlah: Sesungguhnya solatku dan ibadatku, hidupku dan matiku hanyalah untuk Allah, Tuhan yang mentadbir sekalian alam.'},
+  163:{words:['لَا','شَرِيكَ','لَهُ','وَبِذَٰلِكَ','أُمِرْتُ','وَأَنَا','أَوَّلُ','الْمُسْلِمِينَ'], decoy:['وَلَدَ','الْمُؤْمِنِينَ'],
+       ms:'Tiadalah sekutu bagi-Nya; dan dengan yang demikian sahaja aku diperintahkan, dan aku ialah orang Islam yang awal pertama berserah diri kepada Allah.'}
+};
+const INTI = [
+  'Solat ialah tunggak kepada segala amalan seseorang Muslim.',
+  'Segala ibadat yang dilakukan perlu mengikut syariat Nabi Muhammad ﷺ.',
+  'Kehidupan di dunia perlu dipenuhi dengan melaksanakan perintah Allah dan Rasulullah ﷺ supaya bahagia di dunia dan di akhirat.',
+  'Menyerahkan segala urusan kehidupan dan selepas kematian kepada Allah.',
+  'Keikhlasan ialah faktor utama segala ibadat diterima oleh Allah.',
+  'Umat Islam wajib menjauhi syirik kerana syirik merupakan larangan Allah.',
+  'Umat Islam wajib memohon hajat kepada Allah kerana Dia ialah Tuhan sekalian alam.'
+];
+const TF = [
+  {t:'Solat ialah tunggak kepada segala amalan seseorang Muslim.',a:true,ex:'Benar – inti sari pertama ayat ini.'},
+  {t:'Segala ibadat perlu dilakukan mengikut syariat Nabi Muhammad ﷺ.',a:true,ex:'Benar – ibadat mesti mengikut cara yang diajar oleh Rasulullah ﷺ.'},
+  {t:'Ibadat boleh dilakukan mengikut cara sendiri asalkan niatnya baik.',a:false,ex:'Salah – ibadat perlu mengikut syariat Nabi Muhammad ﷺ.'},
+  {t:'Kehidupan di dunia perlu dipenuhi dengan melaksanakan perintah Allah dan Rasul supaya bahagia di dunia dan akhirat.',a:true,ex:'Benar – inti sari ketiga.'},
+  {t:'Keikhlasan tidak penting asalkan ibadat dilakukan dengan banyak.',a:false,ex:'Salah – keikhlasan ialah faktor utama ibadat diterima oleh Allah.'},
+  {t:'Umat Islam wajib menjauhi syirik kerana syirik merupakan larangan Allah.',a:true,ex:'Benar – “لَا شَرِيكَ لَهُ”: tiada sekutu bagi-Nya.'},
+  {t:'Seseorang boleh memohon hajat kepada selain Allah jika dalam keadaan terdesak.',a:false,ex:'Salah – umat Islam wajib memohon hajat kepada Allah, Tuhan sekalian alam.'},
+  {t:'Kita perlu menyerahkan segala urusan kehidupan dan selepas kematian kepada Allah.',a:true,ex:'Benar – “hidupku dan matiku hanyalah untuk Allah”.'},
+  {t:'Ayat 162–163 Surah al-An\'am terkandung dalam doa iftitah yang dibaca dalam solat.',a:true,ex:'Benar – rujuk Spektrum Ilmu: sunat membaca doa iftitah dalam solat.'},
+  {t:'Ayat ini menyatakan hidup dan mati manusia adalah untuk mengejar harta dunia.',a:false,ex:'Salah – hidup dan mati hanyalah untuk Allah, Tuhan sekalian alam.'},
+  {t:'Hadis tentang doa iftitah dalam Spektrum Ilmu diriwayatkan oleh Saidina Ali bin Abu Talib.',a:true,ex:'Benar – riwayat Ali bin Abu Talib (Riwayat Muslim).'},
+  {t:'“لَا شَرِيكَ لَهُ” bermaksud “Tuhan yang mentadbir sekalian alam”.',a:false,ex:'Salah – maksudnya “Tiadalah sekutu bagi-Nya”.'},
+];
+const FILL = [
+  {pre:'قُلْ إِنَّ صَلَاتِي وَ',post:'',a:'نُسُكِي',o:['نُسُكِي','صِيَامِي','مَالِي','عِلْمِي'],h:'…solatku dan ibadatku'},
+  {pre:'قُلْ إِنَّ',post:'وَنُسُكِي',a:'صَلَاتِي',o:['صَلَاتِي','زَكَاتِي','دُعَائِي','قِرَاءَتِي'],h:'Sesungguhnya solatku…'},
+  {pre:'وَمَحْيَايَ وَ',post:'',a:'مَمَاتِي',o:['مَمَاتِي','حَيَاتِي','مَنَامِي','مَالِي'],h:'hidupku dan matiku'},
+  {pre:'لِلَّهِ',post:'الْعَالَمِينَ',a:'رَبِّ',o:['رَبِّ','مَلِكِ','إِلَٰهِ','نُورِ'],h:'Tuhan yang mentadbir sekalian alam'},
+  {pre:'لَا',post:'لَهُ',a:'شَرِيكَ',o:['شَرِيكَ','وَلَدَ','مِثْلَ','كُفُوًا'],h:'Tiadalah sekutu bagi-Nya'},
+  {pre:'وَبِذَٰلِكَ',post:'',a:'أُمِرْتُ',o:['أُمِرْتُ','أُرْسِلْتُ','خُلِقْتُ','هُدِيتُ'],h:'aku diperintahkan'},
+  {pre:'وَأَنَا أَوَّلُ',post:'',a:'الْمُسْلِمِينَ',o:['الْمُسْلِمِينَ','الْمُؤْمِنِينَ','الصَّالِحِينَ','الْمُتَّقِينَ'],h:'orang Islam yang awal pertama'},
+  {pre:'',post:'رَبِّ الْعَالَمِينَ',a:'لِلَّهِ',o:['لِلَّهِ','لِلنَّاسِ','لِلدُّنْيَا','لِنَفْسِي'],h:'hanyalah untuk Allah'},
+];
+const BOSS = [
+  {q:'Surah al-An\'am ialah surah yang ke berapa dalam al-Quran?',o:['Ke-6','Ke-5','Ke-7','Ke-18'],a:0,ex:'Surah al-An\'am ialah surah ke-6 (al-An\'am, 6: 162–163).'},
+  {q:'Siapakah yang meriwayatkan hadis Rasulullah ﷺ membaca doa iftitah yang mengandungi ayat ini?',o:['Abu Hurairah','Ali bin Abu Talib','Anas bin Malik','Abu Darda\''],a:1,ex:'Saidina Ali bin Abu Talib (Riwayat Muslim).'},
+  {q:'Menurut hadis Ibnu Umar, apakah yang berlaku kerana kalimah “Allahu akbar kabira, walhamdulillahi kathira…”?',o:['Hujan turun dengan lebat','Dosa diampunkan serta-merta','Pintu-pintu langit dibuka','Malaikat turun ke bumi'],a:2,ex:'Rasulullah ﷺ bersabda: pintu-pintu langit dibuka kerana kalimah itu.'},
+  {q:'Apakah maksud doa “اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ”?',o:['Ya Allah, ampunkanlah dosaku dan dosa ibu bapaku','Ya Allah, bantulah aku untuk mengingati-Mu, mensyukuri-Mu dan beribadat kepada-Mu dengan baik','Ya Allah, berilah aku rezeki yang halal','Ya Allah, masukkanlah aku ke dalam syurga'],a:1,ex:'Doa supaya ditetapkan iman (Riwayat Abu Daud).'},
+  {q:'Apakah faktor utama segala ibadat diterima oleh Allah?',o:['Bilangan ibadat yang banyak','Pujian daripada orang lain','Keikhlasan','Pakaian yang mahal'],a:2,ex:'Keikhlasan ialah faktor utama segala ibadat diterima oleh Allah.'},
+  {q:'Situasi: Hakim bersolat dengan khusyuk hanya apabila cikgu melihatnya. Sikap ini bertentangan dengan pengajaran ayat kerana…',o:['Ibadat mesti dilakukan secara ikhlas kerana Allah','Solat mesti dilakukan di masjid sahaja','Solat boleh ditinggalkan jika tiada orang melihat','Solat hanya wajib di sekolah'],a:0,ex:'“Solatku… hanyalah untuk Allah” – ibadat untuk Allah, bukan untuk dipuji manusia.'},
+  {q:'Situasi: Seorang lelaki meminta nombor ekor di kubur yang dianggap keramat. Perbuatan ini…',o:['Dibolehkan jika niat baik','Termasuk syirik yang dilarang Allah','Hanya makruh','Satu amalan sunat'],a:1,ex:'Umat Islam wajib menjauhi syirik dan memohon hajat hanya kepada Allah.'},
+  {q:'Situasi: Keluarga Aina bercuti di pantai ketika masuk waktu Zohor. Apakah tindakan terbaik?',o:['Tunaikan solat walau di mana berada','Tinggalkan solat kerana bercuti','Qada solat minggu depan','Solat apabila sampai di rumah sahaja'],a:0,ex:'Solat ialah satu kewajipan – tunaikan solat walau di mana berada.'},
+  {q:'Hukum tajwid pada kalimah “إِنَّ”:',o:['Izhar halqi','Ghunnah musyaddadah','Qalqalah sughra','Idgham bila ghunnah'],a:1,ex:'Nun bersyaddah – dengung 2 harakat (ghunnah musyaddadah).'},
+  {q:'Bacaan apabila berhenti (waqaf) pada kalimah “الْعَالَمِينَ”:',o:['Mad wajib muttasil','Mad jaiz munfasil','Mad ‘arid lissukun','Mad lazim kalimi'],a:2,ex:'Huruf mad diikuti huruf yang disukunkan kerana waqaf – mad ‘arid lissukun.'},
+  {q:'Lafaz Allah dalam “لِلَّهِ” dibaca…',o:['Tebal (tafkhim) kerana sebelumnya baris atas','Nipis (tarqiq) kerana sebelumnya baris bawah','Tebal kerana sebelumnya baris hadapan','Dengung kerana ada syaddah'],a:1,ex:'Lam jalalah didahului baris bawah (kasrah) – dibaca nipis.'},
+  {q:'Frasa “وَأَنَا أَوَّلُ الْمُسْلِمِينَ” bermaksud…',o:['Dan aku ialah orang Islam yang awal pertama berserah diri kepada Allah','Dan aku ialah orang yang paling kaya','Dan aku diperintahkan berjihad','Dan aku ialah nabi yang terakhir'],a:0,ex:'Maksud ayat 163 dalam buku teks.'},
+  {q:'Apakah kesan sikap menyerahkan hidup dan mati kepada Allah dalam kehidupan seorang pelajar?',o:['Malas berusaha kerana semuanya takdir','Berusaha bersungguh-sungguh dan bertawakal kepada Allah','Tidak peduli tentang solat','Hanya beribadat ketika peperiksaan'],a:1,ex:'Hidup dipenuhi dengan perintah Allah supaya bahagia di dunia dan akhirat.'},
+];
+
+/* ================== TETAPAN ================== */
+const DIFF = {
+  H:{label:'Level 1',emo:'🌱',mult:1,time:25,preview:5000,opts:3,lives:4},
+  S:{label:'Level 2',emo:'🌿',mult:1.5,time:18,preview:3000,opts:3,lives:3},
+  C:{label:'Level 3',emo:'🌳',mult:2,time:12,preview:1500,opts:4,lives:3},
+};
+const LEVELS = [
+  {id:0,emo:'🧩',name:'Pelita Bacaan',title:'Pelita 1: Susun Ayat',x:12,y:80,
+   desc:'Susun kalimah ayat 162 dan 163 mengikut tertib yang betul. Sentuh kalimah dari KANAN ke KIRI seperti membaca al-Quran.',
+   rule:'✅ Betul = +30 markah · ❌ Salah = −15 · ⏱️ Cepat siap = bonus masa',badge:{e:'📜',n:'Penyusun Ayat'}},
+  {id:1,emo:'🃏',name:'Pelita Makna',title:'Pelita 2: Padan Makna',x:33,y:50,
+   desc:'Ingat kedudukan kad, kemudian padankan setiap potongan ayat dengan maksudnya.',
+   rule:'🧠 Kad akan ditunjukkan sekejap. Lagi sedikit cubaan = lagi banyak markah!',badge:{e:'🧠',n:'Pakar Makna'}},
+  {id:2,emo:'⚖️',name:'Pelita Inti Sari',title:'Pelita 3: Neraca Benar / Salah',x:52,y:80,
+   desc:'Baca kenyataan tentang inti sari ayat. Tekan BENAR atau SALAH sebelum masa tamat!',
+   rule:'🔥 Jawab betul berturut-turut untuk bonus kombo!',badge:{e:'⚖️',n:'Penimbang Hikmah'}},
+  {id:3,emo:'✨',name:'Pelita Hafazan',title:'Pelita 4: Lengkapkan Ayat',x:70,y:30,
+   desc:'Pilih kalimah yang tepat untuk melengkapkan potongan ayat. Uji hafazan anda!',
+   rule:'⏱️ Lagi cepat menjawab = lagi tinggi bonus masa',badge:{e:'🌟',n:'Hafiz Muda'}},
+  {id:4,emo:'🕌',name:'Menara Ikhlas',title:'Pelita 5: Cabaran Menara Ikhlas',x:88,y:24,
+   desc:'Cabaran akhir! Soalan campuran: Spektrum Ilmu, amalan, tajwid dan situasi kehidupan.',
+   rule:'❤️ Nyawa terhad – jika habis, cabaran tamat. Kombo berganda markah!',badge:{e:'🏮',n:'Hamba Ikhlas'}},
+];
+
+/* ================== KEADAAN ================== */
+const KEY='pai4_p1_kembara_v1';
+let S = fresh();
+function fresh(){return {name:'',diff:'S',lv:LEVELS.map(()=>({stars:0,score:0}))}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function load(){try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&v.lv)return v}catch(e){}return null}
+let sound=true;
+
+/* ================== UTIL ================== */
+const $=id=>document.getElementById(id);
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const totalStars=()=>S.lv.reduce((s,l)=>s+l.stars,0);
+const totalScore=()=>S.lv.reduce((s,l)=>s+l.score,0);
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');
+  $('hud').style.display = id==='sStart'?'none':'flex'; if(id==='sMap')renderMap(); updHud(); window.scrollTo({top:0,behavior:'smooth'}); stopTimer();}
+function updHud(){$('hName').textContent=S.name||'-';$('hDiff').textContent=DIFF[S.diff].emo+' '+DIFF[S.diff].label;$('hStars').textContent=totalStars();$('hScore').textContent=totalScore()}
+function closeM(id){$(id).classList.remove('on')}
+function toast(txt,color){const t=$('toast');t.textContent=txt;t.style.color=color||'var(--teal)';t.classList.remove('go');void t.offsetWidth;t.classList.add('go')}
+
+/* bunyi */
+let AC=null;
+function beep(type){ if(!sound)return; try{ AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+  const seq={ok:[[660,.08],[880,.12]],no:[[220,.18],[160,.2]],win:[[523,.1],[659,.1],[784,.1],[1046,.3]],tap:[[520,.05]],star:[[988,.12]]}[type]||[[440,.1]];
+  let t=AC.currentTime; seq.forEach(([f,d])=>{const o=AC.createOscillator(),g=AC.createGain();o.type=type==='no'?'sawtooth':'triangle';o.frequency.value=f;
+    g.gain.setValueAtTime(.18,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d+.02);t+=d*.9});
+ }catch(e){} }
+
+/* confetti */
+const cv=$('fx'),cx=cv.getContext('2d');let parts=[];
+function rs(){cv.width=innerWidth;cv.height=innerHeight}addEventListener('resize',rs);rs();
+function confetti(n=140){const cols=['#F2A900','#0E7C6B','#E0473C','#2D6CDF','#7B4FD6','#22A55A'];
+  for(let i=0;i<n;i++)parts.push({x:innerWidth/2,y:innerHeight*.35,vx:(Math.random()-.5)*16,vy:Math.random()*-14-4,r:Math.random()*8+5,c:cols[i%cols.length],a:Math.random()*6,life:120+Math.random()*60});
+  if(parts.length===n)loop()}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);parts.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.a+=.2;p.life--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.fillStyle=p.c;cx.fillRect(-p.r/2,-p.r/3,p.r,p.r*.6);cx.restore()});
+  parts=parts.filter(p=>p.life>0&&p.y<cv.height+40);if(parts.length)requestAnimationFrame(loop);else cx.clearRect(0,0,cv.width,cv.height)}
+
+/* timer */
+let tmr=null;
+function startTimer(sec,onEnd,el){stopTimer();const start=performance.now();const bar=el.querySelector('i');
+  tmr=setInterval(()=>{const left=sec-(performance.now()-start)/1000;const p=Math.max(0,left/sec);bar.style.width=(p*100)+'%';el.classList.toggle('warn',p<.3);
+    if(left<=0){stopTimer();onEnd()}},80);
+  return ()=>Math.max(0,sec-(performance.now()-start)/1000)}
+function stopTimer(){if(tmr){clearInterval(tmr);tmr=null}}
+
+/* ================== MULA ================== */
+document.querySelectorAll('.diff').forEach(b=>b.onclick=()=>{document.querySelectorAll('.diff').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');S.diff=b.dataset.d;beep('tap')});
+$('startBtn').onclick=()=>{const n=$('nameIn').value.trim();if(!n){$('nameIn').classList.add('shake');$('nameIn').focus();setTimeout(()=>$('nameIn').classList.remove('shake'),400);return}
+  const d=S.diff;S=fresh();S.name=n;S.diff=d;save();beep('win');go('sMap')};
+$('nameIn').addEventListener('keydown',e=>{if(e.key==='Enter')$('startBtn').click()});
+const old=load(); if(old&&old.name){$('resumeBtn').style.display='inline-flex';$('resumeBtn').textContent='↻ Sambung sebagai '+old.name;$('resumeBtn').onclick=()=>{S=old;go('sMap')}}
+$('homeBtn').onclick=()=>go('sMap');
+$('sndBtn').onclick=()=>{sound=!sound;$('sndBtn').textContent=sound?'🔊':'🔇'};
+$('reviewBtn').onclick=()=>$('mReview').classList.add('on');
+$('lbBtn').onclick=()=>{renderLb();$('mLb').classList.add('on')};
+$('certBtn').onclick=showCert;
+$('newGame').onclick=()=>{$('nameIn').value='';go('sStart')};
+
+/* ulang kaji */
+$('rvList').innerHTML=POT.map(p=>`<div class="ar">${p.ar}${p.ay===162&&p.ar.includes('الْعَالَمِينَ')?' ۝١٦٢':p.ar.includes('الْمُسْلِمِينَ')?' ۝١٦٣':''}</div><div class="ms">${p.ms}</div>`).join('');
+$('intiList').innerHTML=INTI.map(t=>`<li>${t}</li>`).join('');
+
+/* ================== PETA ================== */
+function unlocked(i){return i===0||S.lv[i-1].stars>0}
+function renderMap(){
+  $('nodes').innerHTML=LEVELS.map((L,i)=>{const st=S.lv[i].stars,u=unlocked(i);const cls=st?'done':u?'open':'lock';
+    return `<button class="node ${cls}" style="left:${L.x}%;top:${L.y}%" data-i="${i}">
+      <div class="orb">${u?(st?'🏮':L.emo):'🔒'}</div><div class="nm">${L.name}</div>
+      <div class="st">${st?'★'.repeat(st)+'☆'.repeat(3-st):''}</div></button>`}).join('');
+  $('nodes').querySelectorAll('.node').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;if(!unlocked(i)){b.classList.add('shake');beep('no');setTimeout(()=>b.classList.remove('shake'),400);return}beep('tap');intro(i)});
+  $('certBtn').style.display=S.lv.every(l=>l.stars>0)?'inline-flex':'none';
+}
+
+/* ================== INTRO ================== */
+let cur=0;
+function intro(i){cur=i;const L=LEVELS[i];$('iEmoji').textContent=L.emo;$('iTitle').textContent=L.title;$('iDesc').textContent=L.desc;$('iRule').textContent=L.rule;$('iGo').onclick=()=>startLevel(i);go('sIntro')}
+function startLevel(i){go('sPlay');[lvSusun,lvMemori,lvTF,lvFill,lvBoss][i]()}
+function head(title,extra=''){return `<div class="lvhead"><span class="tag">${title}</span><div class="prog"><i id="pg"></i></div>${extra}</div>`}
+function setProg(a,b){const p=$('pg');if(p)p.style.width=(a/b*100)+'%'}
+
+/* ================== PELITA 1: SUSUN AYAT ================== */
+function lvSusun(){
+  const d=S.diff, m=DIFF[d].mult; let round=0, correct=0, wrong=0, score=0; const t0=performance.now();
+  const rounds=[162,163].map(n=>{
+    if(d==='H'){const parts=POT.filter(p=>p.ay===n).map(p=>p.ar);return{n,ans:parts,pool:parts.slice()}}
+    const w=AYAT[n].words;return{n,ans:w,pool:d==='C'?w.concat(AYAT[n].decoy):w.slice()}});
+  function draw(){
+    const R=rounds[round];let pos=0;
+    let pool=shuf(R.pool); if(pool.join()===R.pool.join())pool=shuf(R.pool);
+    $('play').innerHTML=head('🧩 Susun Ayat '+R.n+' ('+(round+1)+'/2)')+
+      `<p class="center" style="font-weight:800;font-size:1.3rem;margin:4px 0">Sentuh kalimah mengikut tertib bacaan (kanan ➜ kiri)</p>
+       <div class="target" id="tg">${R.ans.map(()=>'<div class="slot"></div>').join('')}</div>
+       <div class="pool" id="pl">${pool.map((w,k)=>`<button class="tile" data-w="${k}">${w}</button>`).join('')}</div>
+       <div id="mn"></div>`;
+    setProg(round,2);
+    const slots=[...$('tg').children];
+    $('pl').querySelectorAll('.tile').forEach(b=>b.onclick=()=>{
+      const w=pool[+b.dataset.w];
+      if(w===R.ans[pos]){slots[pos].textContent=w;slots[pos].classList.add('fill','tile');slots[pos].style.boxShadow='none';b.classList.add('used');pos++;correct++;score+=30*m;beep('ok');
+        if(pos===R.ans.length){beep('win');confetti(60);$('pl').style.display='none';
+          $('mn').innerHTML=`<div class="meaning">📖 ${AYAT[R.n].ms}</div><div class="center mt"><button class="btn gold" id="nx">${round===0?'Ayat seterusnya ▶':'Selesai ✔'}</button></div>`;
+          $('nx').onclick=()=>{round++;round<2?draw():finish()}}
+      }else{wrong++;score=Math.max(0,score-15);beep('no');b.classList.add('shake','wrongflash');setTimeout(()=>b.classList.remove('shake','wrongflash'),450)}
+    });
+  }
+  function finish(){const sec=(performance.now()-t0)/1000;const limit=d==='H'?150:d==='S'?120:100;const bonus=Math.round(Math.max(0,limit-sec)*2*m);
+    const acc=correct/(correct+wrong);result(0,Math.round(score+bonus),acc,`Tepat ${correct} / ${correct+wrong} sentuhan · Masa ${Math.round(sec)} saat · Bonus masa +${bonus}`)}
+  draw();
+}
+
+/* ================== PELITA 2: PADAN MAKNA ================== */
+function lvMemori(){
+  const d=S.diff,m=DIFF[d].mult;let cards=[];POT.forEach((p,i)=>{cards.push({k:i,t:'ar',v:p.ar});cards.push({k:i,t:'ms',v:p.ms})});cards=shuf(cards);
+  let open=[],found=0,tries=0,lock=true;
+  $('play').innerHTML=head('🃏 Padan Makna',`<div class="chip" style="font-weight:800">Cubaan: <span id="tr">0</span></div>`)+
+    `<p class="center" style="font-weight:800;font-size:1.3rem;margin:4px 0" id="msg">👀 Ingat kedudukan kad…</p><div class="grid" id="gd">${cards.map((c,i)=>
+    `<button class="mcard flip" data-i="${i}"><div class="in"><div class="f">🏮</div><div class="b ${c.t}">${c.v}</div></div></button>`).join('')}</div>`;
+  setProg(0,6);
+  setTimeout(()=>{if(!$('msg'))return;document.querySelectorAll('.mcard').forEach(c=>c.classList.remove('flip'));$('msg').textContent='Sentuh 2 kad: potongan ayat + maksudnya';lock=false},DIFF[d].preview);
+  document.querySelectorAll('.mcard').forEach(el=>el.onclick=()=>{
+    if(lock||el.classList.contains('flip'))return;el.classList.add('flip');beep('tap');open.push(el);
+    if(open.length===2){tries++;$('tr').textContent=tries;lock=true;const[a,b]=open.map(e=>cards[+e.dataset.i]);
+      if(a.k===b.k&&a.t!==b.t){open.forEach(e=>e.classList.add('match'));found++;setProg(found,6);beep('ok');toast('Padan! ✨');open=[];lock=false;
+        if(found===6){beep('win');setTimeout(()=>{const acc=6/tries;const sc=Math.round((600+Math.max(0,(14-tries))*40)*m);result(1,sc,Math.min(1,acc*1.5),`Selesai dalam ${tries} cubaan (paling minimum 6)`)},700)}}
+      else{beep('no');setTimeout(()=>{open.forEach(e=>e.classList.remove('flip'));open=[];lock=false},900)}}
+  });
+}
+
+/* ================== ENJIN KUIZ (Pelita 3,4,5) ================== */
+function quiz(cfg){
+  const d=S.diff,m=DIFF[d].mult;let i=0,score=0,ok=0,streak=0,best=0,lives=cfg.lives||0;const Q=cfg.qs;
+  function draw(){
+    const q=Q[i];
+    $('play').innerHTML=head(cfg.tag+' '+(i+1)+'/'+Q.length,(cfg.lives?`<span class="lives" id="lv">${'❤️'.repeat(lives)}</span>`:'')+`<span class="combo" id="cb">${streak>=2?'🔥 x'+streak:''}</span>`)+
+      `<div class="timer" id="tm"><i></i></div>`+cfg.render(q)+`<div class="feedback" id="fb"></div>`;
+    setProg(i,Q.length);
+    const left=startTimer(DIFF[d].time,()=>answer(-1),$('tm'));
+    document.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>answer(+b.dataset.o));
+    function answer(ch){stopTimer();const right=ch===q.ans;document.querySelectorAll('[data-o]').forEach(b=>{b.disabled=true;const o=+b.dataset.o;
+        if(cfg.tf){if(o!==q.ans)b.classList.add('dim');else b.classList.add('ring')}else{if(o===q.ans)b.classList.add('ok');else if(o===ch)b.classList.add('no')}});
+      const fb=$('fb');
+      if(right){ok++;streak++;best=Math.max(best,streak);const tb=Math.round(left()*5);const cb=streak>=3?50*(cfg.boss?2:1):0;const g=Math.round((100+tb+cb)*m);score+=g;beep('ok');
+        toast(streak>=3?'🔥 KOMBO x'+streak+'!':['Hebat!','Tepat!','MasyaAllah!','Syabas!'][Math.random()*4|0],'var(--green)');
+        fb.className='feedback show good';fb.innerHTML=`✅ <b>Betul! +${g}</b> (bonus masa ${tb}${cb?', kombo '+cb:''})<br>${q.ex||''}`}
+      else{streak=0;beep('no');if(cfg.lives){lives--;}fb.className='feedback show bad';fb.innerHTML=`${ch===-1?'⏰ <b>Masa tamat!</b>':'❌ <b>Kurang tepat.</b>'}<br>${q.ex||''}`;
+        if(cfg.lives){$('lv').textContent='❤️'.repeat(lives)+'🖤'.repeat(Math.max(0,cfg.lives-lives))}}
+      fb.innerHTML+=`<div class="center mt"><button class="btn gold" id="nx">${(i+1<Q.length&&!(cfg.lives&&lives<=0))?'Seterusnya ▶':'Lihat keputusan ✔'}</button></div>`;
+      $('nx').onclick=()=>{i++;if(cfg.lives&&lives<=0){end(true)}else if(i<Q.length)draw();else end(false)};
+      $('nx').focus();
+    }
+  }
+  function end(dead){const acc=ok/Q.length;result(cfg.lvl,score,acc,`Betul ${ok} / ${Q.length} · Kombo terbaik ${best}`+(dead?' · 💔 Nyawa habis!':''))}
+  draw();
+}
+const keys=['A','B','C','D'];
+function lvTF(){
+  const n=S.diff==='H'?8:10;
+  quiz({lvl:2,tag:'⚖️ Benar/Salah',tf:true,qs:shuf(TF).slice(0,n).map(q=>({...q,ans:q.a?0:1})),
+    render:q=>`<div class="qbox"><div class="q">${q.t}</div></div><div class="tf"><button class="opt b" data-o="0">✔ BENAR</button><button class="opt s" data-o="1">✖ SALAH</button></div>`});
+}
+function lvFill(){
+  const k=DIFF[S.diff].opts;
+  quiz({lvl:3,tag:'✨ Lengkapkan Ayat',qs:shuf(FILL).map(q=>{let o=shuf([q.a,...shuf(q.o.filter(x=>x!==q.a)).slice(0,k-1)]);return{...q,opts:o,ans:o.indexOf(q.a),ex:'Jawapan: <span class="ar" style="font-size:1.6rem">'+q.a+'</span> — '+q.h}}),
+    render:q=>`<div class="qbox"><div class="q">Lengkapkan potongan ayat:</div><div class="ar qa">${q.pre} <span class="blank">؟</span> ${q.post}</div>
+      ${S.diff==='C'?'':`<div style="font-weight:700;color:var(--muted)">💡 Petunjuk: “${q.h}”</div>`}</div>
+      <div class="opts">${q.opts.map((o,j)=>`<button class="opt ar" data-o="${j}"><span class="k">${keys[j]}</span>${o}</button>`).join('')}</div>`});
+}
+function lvBoss(){
+  quiz({lvl:4,tag:'🕌 Menara Ikhlas',boss:true,lives:DIFF[S.diff].lives,qs:shuf(BOSS).slice(0,10).map(q=>{const idx=shuf([0,1,2,3]);return{...q,opts:idx.map(j=>q.o[j]),ans:idx.indexOf(q.a)}}),
+    render:q=>`<div class="qbox"><div class="q">${q.q}</div></div><div class="opts">${q.opts.map((o,j)=>`<button class="opt" data-o="${j}"><span class="k">${keys[j]}</span><span>${o}</span></button>`).join('')}</div>`});
+}
+
+/* ================== KEPUTUSAN ================== */
+function result(lvl,score,acc,detail){
+  const stars=acc>=.9?3:acc>=.7?2:acc>=.5?1:0;const L=LEVELS[lvl];const prev=S.lv[lvl];
+  const firstBadge=stars>0&&prev.stars===0;
+  if(stars>prev.stars||(stars===prev.stars&&score>prev.score)){S.lv[lvl]={stars:Math.max(stars,prev.stars),score:Math.max(score,prev.score)}}
+  save();go('sResult');
+  $('rTitle').textContent=stars?`🏮 ${L.name} Menyala!`:'💨 Pelita belum menyala…';
+  $('rScore').textContent=score;$('rAcc').textContent=`Ketepatan ${Math.round(acc*100)}% · ${detail}`;
+  const sp=$('rStars').children;[...sp].forEach((s,k)=>{s.classList.remove('on');if(k<stars)setTimeout(()=>{s.classList.add('on');beep('star')},350+k*350)});
+  $('rBadge').innerHTML=stars?`<div class="badge"><span class="e">${L.badge.e}</span>Lencana: ${L.badge.n}${firstBadge?' — BAHARU!':''}</div>`:'';
+  $('rMsg').textContent=stars===3?'MasyaAllah, cemerlang! Teruskan istiqamah – “Solatku, ibadatku, hidupku dan matiku hanyalah untuk Allah.”':
+    stars===2?'Syabas! Sedikit lagi untuk 3 bintang. Cuba lagi untuk markah lebih tinggi!':stars===1?'Alhamdulillah, pelita menyala! Ulang kaji ayat dan cuba dapatkan lebih bintang.':
+    'Jangan putus asa! Tekan “Ulang Kaji Ayat” di peta, kemudian cuba lagi. Perlu sekurang-kurangnya 50% betul.';
+  if(stars)setTimeout(()=>confetti(stars*60),300);
+  $('rRetry').onclick=()=>intro(lvl);
+  $('rNext').textContent=S.lv.every(l=>l.stars>0)?'🎖️ Lihat Sijil':'🗺️ Ke Peta';
+  $('rNext').onclick=()=>S.lv.every(l=>l.stars>0)?showCert():go('sMap');
+  updHud();
+}
+
+/* ================== SIJIL & JUARA ================== */
+function rank(){const s=totalStars();return s>=14?'🏆 Hamba Ikhlas Cemerlang':s>=11?'🥇 Hamba Taat Istiqamah':s>=8?'🥈 Hamba Yang Bersyukur':'🥉 Hamba Yang Berusaha'}
+function showCert(){go('sCert');$('cName').textContent=S.name;$('cRank').textContent=rank();$('cScore').textContent=totalScore();
+  $('cStars').innerHTML='★'.repeat(totalStars()).split('').map(()=>'<span class="on">★</span>').join('')+'<span>'+'★'.repeat(15-totalStars())+'</span>';
+  $('cBadges').innerHTML=LEVELS.map((L,i)=>`<div class="badge ${S.lv[i].stars?'':'lock'}"><span class="e">${L.badge.e}</span>${L.badge.n}</div>`).join('');
+  // simpan ke papan juara
+  try{const lb=JSON.parse(localStorage.getItem(KEY+'_lb')||'[]');const idx=lb.findIndex(r=>r.n===S.name&&r.d===S.diff);
+    const rec={n:S.name,d:S.diff,s:totalStars(),p:totalScore()};if(idx>=0){if(rec.p>lb[idx].p)lb[idx]=rec}else lb.push(rec);
+    lb.sort((a,b)=>b.p-a.p);localStorage.setItem(KEY+'_lb',JSON.stringify(lb.slice(0,15)))}catch(e){}
+  confetti(220);beep('win')}
+function renderLb(){let lb=[];try{lb=JSON.parse(localStorage.getItem(KEY+'_lb')||'[]')}catch(e){}
+  $('lbBody').innerHTML=lb.length?lb.map((r,i)=>`<tr><td>${['🥇','🥈','🥉'][i]||i+1}</td><td><b>${r.n.replace(/</g,'&lt;')}</b></td><td>${DIFF[r.d].emo} ${DIFF[r.d].label}</td><td>${r.s}</td><td><b>${r.p}</b></td></tr>`).join(''):
+  '<tr><td colspan="5">Belum ada juara. Nyalakan kelima-lima pelita untuk tersenarai!</td></tr>'}
+</script>
+</body>
+</html>
