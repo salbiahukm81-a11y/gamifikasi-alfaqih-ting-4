@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pelayaran Perisai Al-Kahfi – P2 Surah al-Kahfi 101-110</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&family=Amiri:wght@400;700&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EAF8FF; --ink:#12263A; --sea:#0A6FB5; --sea2:#18A0D8; --sand:#FFE7A8; --gold:#F5A700; --gold2:#FFD45C;
+  --red:#E0473C; --green:#1FA35A; --coral:#FF7A59; --purple:#7B4FD6; --card:#FFFFFF; --muted:#557089;
+  --shadow:0 6px 0 rgba(0,0,0,.12), 0 12px 24px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%}
+body{font-family:'Baloo 2',system-ui,sans-serif;color:var(--ink);font-size:22px;line-height:1.35;
+  background:linear-gradient(180deg,#D9F3FF 0%,#EAF8FF 40%,#FFF6DC 100%);min-height:100vh;overflow-x:hidden}
+.ar{font-family:'Amiri Quran','Amiri',serif;direction:rtl;line-height:2.1}
+button{font-family:inherit;cursor:pointer;border:none}
+.wrap{max-width:1100px;margin:0 auto;padding:18px 18px 40px}
+.screen{display:none;animation:pop .35s ease}.screen.on{display:block}
+@keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+.hud{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--card);border-radius:22px;padding:10px 16px;box-shadow:var(--shadow);margin-bottom:18px;border:3px solid #CDEBFA}
+.chip{display:flex;align-items:center;gap:8px;font-weight:800;font-size:1.05rem;background:#FFF1C9;border-radius:14px;padding:6px 14px}
+.chip.t{background:#DCF1FF;color:var(--sea)}
+.iconbtn{background:#EEF4F8;border-radius:14px;padding:8px 14px;font-size:1.05rem;font-weight:700;color:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:1.35rem;font-weight:800;padding:14px 30px;border-radius:20px;color:#fff;background:var(--sea);box-shadow:0 7px 0 #064B7C;transition:transform .1s,box-shadow .1s;min-height:64px}
+.btn:active{transform:translateY(5px);box-shadow:0 2px 0 #064B7C}
+.btn.gold{background:var(--gold);color:#3A2600;box-shadow:0 7px 0 #A86F00}.btn.gold:active{box-shadow:0 2px 0 #A86F00}
+.btn.ghost{background:#fff;color:var(--sea);box-shadow:0 7px 0 #CDE3F0;border:3px solid var(--sea)}
+.title-card{text-align:center;background:var(--card);border-radius:34px;padding:30px 22px;box-shadow:var(--shadow);border:4px solid #CDEBFA;position:relative;overflow:hidden}
+.title-card h1{font-size:clamp(2.1rem,6vw,3.6rem);margin:.1em 0;line-height:1.05;color:var(--sea)}
+.title-card h1 span{color:var(--gold);text-shadow:0 3px 0 #A86F00}
+.sub{font-size:1.3rem;color:var(--muted);font-weight:700}
+.title-card .ayah{font-size:clamp(1.8rem,4.4vw,2.8rem);margin:10px 0}
+.waves{font-size:3rem;letter-spacing:8px}
+.field{margin:20px auto 6px;max-width:520px;text-align:left}
+.field label{font-weight:800;font-size:1.2rem}
+.field input{width:100%;font-size:1.5rem;font-family:inherit;padding:12px 18px;border-radius:16px;border:3px solid #C9D9E6;margin-top:6px;font-weight:700}
+.field input:focus{outline:none;border-color:var(--sea)}
+.diffs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px auto;max-width:860px}
+.diff{background:#fff;border:4px solid #E1E9F0;border-radius:22px;padding:14px 10px;text-align:center;font-weight:800;font-size:1.25rem;color:var(--ink);box-shadow:0 5px 0 #E1E9F0}
+.diff .em{font-size:2.4rem;display:block}
+.diff small{display:block;font-weight:600;color:var(--muted);font-size:.95rem;line-height:1.25}
+.diff.sel{border-color:var(--sea);background:#E6F5FF;box-shadow:0 5px 0 var(--sea)}
+@media(max-width:640px){.diffs{grid-template-columns:1fr}}
+
+/* MAP: laut */
+.mapwrap{display:grid;grid-template-columns:1fr 260px;gap:16px}
+@media(max-width:860px){.mapwrap{grid-template-columns:1fr}}
+.map{position:relative;border-radius:34px;box-shadow:var(--shadow);border:4px solid #CDEBFA;padding:18px;min-height:540px;overflow:hidden;
+  background:repeating-linear-gradient(170deg,rgba(255,255,255,.18) 0 18px,transparent 18px 46px),linear-gradient(180deg,#7FD3F7,#2C9BD6 60%,#1478B8)}
+.map h2{text-align:center;margin:0;font-size:2rem;color:#fff;text-shadow:0 3px 0 rgba(0,0,0,.2)}
+.map .hint{text-align:center;color:#fff;font-weight:700;margin:0 0 6px;text-shadow:0 2px 0 rgba(0,0,0,.2)}
+.nodes{position:relative;height:440px}
+.isle{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:4px;background:none;color:var(--ink);width:170px}
+.isle .orb{width:118px;height:84px;border-radius:50% 50% 44% 44%;display:grid;place-items:center;font-size:2.6rem;background:radial-gradient(ellipse at 50% 30%,#FFF3C4,#F6D477);border:5px solid #E6B94D;box-shadow:0 8px 0 rgba(0,0,0,.18);transition:transform .2s}
+.isle:hover .orb{transform:scale(1.07) rotate(-2deg)}
+.isle.open .orb{animation:bob 2s ease-in-out infinite;border-color:#fff;box-shadow:0 8px 0 rgba(0,0,0,.18),0 0 0 10px rgba(255,255,255,.35)}
+.isle.done .orb{background:radial-gradient(ellipse at 50% 30%,#D8FFE5,#6FD69A);border-color:#1FA35A}
+.isle.lock{opacity:.6;cursor:not-allowed}.isle.lock .orb{filter:grayscale(.8)}
+.isle .nm{font-weight:800;font-size:1.05rem;background:#fff;padding:2px 12px;border-radius:12px;box-shadow:0 3px 0 rgba(0,0,0,.12);text-align:center;line-height:1.2}
+.isle .st{font-size:1.25rem;letter-spacing:2px;color:var(--gold2);text-shadow:0 2px 0 #A86F00;min-height:1.4em}
+@keyframes bob{50%{transform:translateY(-8px)}}
+.boat{position:absolute;font-size:3rem;transform:translate(-50%,-80%);transition:left 1s,top 1s;filter:drop-shadow(0 4px 2px rgba(0,0,0,.25));pointer-events:none;z-index:2}
+.side{background:var(--card);border-radius:30px;box-shadow:var(--shadow);border:4px solid #CDEBFA;padding:16px;text-align:center}
+.side h3{margin:0;color:var(--sea);font-size:1.35rem}
+.side p{margin:4px 0;font-weight:700;font-size:1rem;color:var(--muted)}
+.mapbar{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+
+.panel{background:var(--card);border-radius:30px;box-shadow:var(--shadow);border:4px solid #CDEBFA;padding:24px}
+.panel h2{margin:0 0 6px;font-size:2rem;color:var(--sea)}
+.lvhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.tag{background:var(--sea);color:#fff;border-radius:14px;padding:4px 14px;font-weight:800}
+.prog{flex:1;min-width:160px;height:20px;background:#EEF4F8;border-radius:12px;overflow:hidden}
+.prog>i{display:block;height:100%;background:linear-gradient(90deg,var(--sea2),var(--gold));width:0;transition:width .3s}
+.timer{height:16px;border-radius:10px;background:#EEF4F8;overflow:hidden;margin:6px 0 14px}
+.timer>i{display:block;height:100%;background:var(--green);width:100%}
+.timer.warn>i{background:var(--red)}
+.combo{font-weight:800;color:#C2410C;font-size:1.2rem}
+.lives{font-size:1.6rem;letter-spacing:3px}
+.qbox{background:#F3F9FD;border-radius:24px;padding:18px;border:3px solid #DDEAF3;margin-bottom:16px;text-align:center}
+.qbox .q{font-size:clamp(1.3rem,2.8vw,1.8rem);font-weight:800}
+.qbox .qa{font-size:clamp(1.8rem,4.6vw,3rem);margin-top:6px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:640px){.opts{grid-template-columns:1fr}}
+.opt{background:#fff;border:4px solid #D9E4EC;border-radius:20px;padding:14px 18px;font-size:clamp(1.15rem,2.3vw,1.45rem);font-weight:800;color:var(--ink);box-shadow:0 6px 0 #D9E4EC;text-align:left;display:flex;gap:12px;align-items:center;min-height:76px}
+.opt .k{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;font-size:1.3rem;font-family:'Baloo 2',sans-serif}
+.opt:nth-child(1) .k{background:#2D6CDF}.opt:nth-child(2) .k{background:var(--purple)}.opt:nth-child(3) .k{background:#D9480F}.opt:nth-child(4) .k{background:#0B7285}
+.opt.ar{font-family:'Amiri Quran','Amiri',serif;font-size:clamp(1.5rem,3.4vw,2.2rem);justify-content:center;font-weight:400;direction:rtl}
+.opt.ok{background:#E3F8EA;border-color:var(--green);box-shadow:0 6px 0 var(--green)}
+.opt.no{background:#FFE6E3;border-color:var(--red);box-shadow:0 6px 0 var(--red)}
+.opt.dim{opacity:.35}
+.opt.ring{outline:6px solid var(--gold);outline-offset:4px}
+.feedback{margin-top:16px;border-radius:20px;padding:14px 18px;font-weight:700;font-size:1.2rem;display:none}
+.feedback.show{display:block;animation:pop .3s}
+.feedback.good{background:#E3F8EA;border:3px solid var(--green)}
+.feedback.bad{background:#FFF0EE;border:3px solid var(--red)}
+.center{text-align:center}.mt{margin-top:16px}
+.meaning{background:#FFF1C9;border-radius:18px;padding:14px 18px;font-weight:700;font-size:1.25rem;text-align:center}
+
+/* Jambatan */
+.bridge{display:flex;direction:rtl;gap:4px;align-items:flex-end;justify-content:center;margin:4px 0 14px;flex-wrap:wrap}
+.plank{width:44px;height:22px;border-radius:6px;background:#E4EDF3;border:2px dashed #B7C9D6}
+.plank.on{background:linear-gradient(#C58A4A,#9A6330);border:2px solid #7A4B21;animation:pop .3s}
+.plank.boat{background:none;border:none;font-size:1.8rem;height:auto;width:auto}
+.prev{background:#E6F5FF;border-radius:18px;padding:6px 14px;font-size:clamp(1.6rem,3.8vw,2.4rem);text-align:center;border:3px solid #BFE3F7}
+
+/* Dua jalan */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.paths .opt{justify-content:center;flex-direction:column;text-align:center;min-height:130px;font-size:1.5rem;color:#fff;border:none}
+.paths .opt .big{font-size:2.6rem}
+.paths .opt.r{background:linear-gradient(135deg,#E0473C,#B4271E);box-shadow:0 8px 0 #7F1A14}
+.paths .opt.f{background:linear-gradient(135deg,#1FA35A,#11753E);box-shadow:0 8px 0 #0B5129}
+.scroll{font-size:clamp(1.35rem,3vw,1.9rem);font-weight:800;background:linear-gradient(#FFF8E2,#FFEDB8);border:4px solid #E6C36A;border-radius:22px;padding:22px;text-align:center;margin-bottom:16px;box-shadow:0 6px 0 #E6C36A}
+
+/* Nombor */
+.numgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+@media(max-width:560px){.numgrid{grid-template-columns:repeat(3,1fr)}}
+.numgrid .opt{justify-content:center;font-size:2rem;min-height:84px}
+
+/* Gelembung */
+.sea{position:relative;height:420px;border-radius:26px;overflow:hidden;background:linear-gradient(180deg,#BFEAFF,#4DB4E8 55%,#1C7FC0 90%,#F2D27F 90%);border:4px solid #9ED7F2}
+.bub{position:absolute;bottom:-150px;width:150px;height:150px;border-radius:50%;display:grid;place-items:center;font-family:'Amiri Quran','Amiri',serif;font-size:1.9rem;color:#0B3A5C;
+  background:radial-gradient(circle at 30% 28%,#fff 0 12%,rgba(255,255,255,.75) 13%,rgba(210,240,255,.55) 60%,rgba(150,215,245,.6));border:3px solid rgba(255,255,255,.95);box-shadow:inset 0 -10px 20px rgba(0,90,150,.25);animation:rise linear forwards;z-index:3;padding:0}
+@keyframes rise{from{transform:translateY(0)}to{transform:translateY(-620px)}}
+.bub.popok{animation:popok .4s forwards!important;background:radial-gradient(circle,#D8FFE5,#6FD69A)}
+.bub.popno{animation:popno .5s forwards!important;background:radial-gradient(circle,#FFE1DE,#FF8F84)}
+@keyframes popok{to{transform:scale(1.6);opacity:0}}
+@keyframes popno{30%{transform:translateX(-12px)}60%{transform:translateX(12px)}100%{opacity:0;transform:scale(.4)}}
+
+/* Boss */
+.boss{display:flex;align-items:center;gap:16px;background:linear-gradient(135deg,#2B1C4A,#4C2A7A);color:#fff;border-radius:22px;padding:12px 18px;margin-bottom:12px}
+.boss .face{font-size:3.4rem;transition:transform .2s}
+.boss .face.hit{animation:hit .5s}
+@keyframes hit{25%{transform:translateX(-14px) rotate(-10deg);filter:brightness(2)}75%{transform:translateX(10px) rotate(6deg)}}
+.hp{flex:1;height:24px;background:rgba(255,255,255,.2);border-radius:14px;overflow:hidden;border:2px solid rgba(255,255,255,.5)}
+.hp>i{display:block;height:100%;width:100%;background:linear-gradient(90deg,#FF5A7A,#FFB23F);transition:width .5s}
+
+/* Result */
+.stars{font-size:4.2rem;letter-spacing:8px}
+.stars span{display:inline-block;color:#D4DEE7}
+.stars span.on{color:var(--gold);text-shadow:0 4px 0 #A86F00;animation:starpop .5s both}
+@keyframes starpop{0%{transform:scale(0) rotate(-90deg)}70%{transform:scale(1.35)}100%{transform:scale(1)}}
+.bigscore{font-size:3rem;font-weight:800;color:var(--sea)}
+.badge{display:inline-flex;align-items:center;gap:12px;background:linear-gradient(135deg,#FFF1C9,#FFDD86);border:3px solid var(--gold);border-radius:20px;padding:10px 20px;font-weight:800;font-size:1.2rem;margin:8px}
+.badge .e{font-size:2.2rem}.badges{display:flex;flex-wrap:wrap;justify-content:center}
+.badge.lock{filter:grayscale(1);opacity:.45}
+.piecegain{font-weight:800;font-size:1.3rem;color:var(--sea)}
+
+/* Review */
+.rv{display:grid;grid-template-columns:1.2fr 1fr;gap:10px}
+@media(max-width:700px){.rv{grid-template-columns:1fr}}
+.rv .ar{font-size:1.75rem;text-align:center;background:#EAF6FD;border-radius:16px;padding:4px 10px}
+.rv .ms{font-weight:700;font-size:1.1rem;display:flex;align-items:center;padding:6px 10px}
+.inti{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:700px){.inti{grid-template-columns:1fr}}
+.inti li{background:#FFF8E2;border-left:8px solid var(--gold);border-radius:14px;padding:10px 14px;font-weight:700;font-size:1.1rem}
+.cert{background:#fff;border-radius:30px;padding:30px;text-align:center;border:10px double var(--sea2);box-shadow:var(--shadow)}
+.cert h2{font-size:2.5rem;color:var(--sea);margin:0}
+.cert .nm{font-size:clamp(2rem,6vw,3.4rem);font-weight:800;border-bottom:4px dotted var(--gold);display:inline-block;padding:0 20px;margin:8px 0}
+.cert .rank{font-size:1.8rem;font-weight:800;color:#A86F00}
+.lb{width:100%;border-collapse:collapse;font-size:1.15rem;margin-top:10px}
+.lb th,.lb td{padding:8px;border-bottom:2px solid #EEF4F8;text-align:left}
+.toast{position:fixed;left:50%;top:22%;transform:translate(-50%,-50%) scale(.6);font-size:clamp(2.4rem,7vw,4.4rem);font-weight:800;pointer-events:none;opacity:0;z-index:50;text-shadow:0 4px 0 rgba(0,0,0,.15);white-space:nowrap}
+.toast.go{animation:toast 1s ease forwards}
+@keyframes toast{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}25%{opacity:1;transform:translate(-50%,-50%) scale(1.1)}70%{opacity:1;transform:translate(-50%,-60%) scale(1)}100%{opacity:0;transform:translate(-50%,-90%) scale(.9)}}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:60}
+.modal{position:fixed;inset:0;background:rgba(10,30,50,.55);display:none;place-items:center;z-index:40;padding:16px}
+.modal.on{display:grid}
+.modal .panel{max-width:860px;width:100%;max-height:90vh;overflow:auto}
+.shake{animation:shake .4s}@keyframes shake{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.pw{text-align:center;margin-top:28px;font-weight:800;font-size:1.15rem;color:var(--sea);letter-spacing:.5px}
+.pw a{color:var(--sea);text-decoration:none;margin-right:14px}
+</style>
+</head>
+<body>
+<canvas id="fx"></canvas>
+<div class="toast" id="toast"></div>
+<div class="wrap">
+  <div class="hud" id="hud" style="display:none">
+    <div class="chip">👤 <span id="hName">-</span></div>
+    <div class="chip t" id="hDiff">-</div>
+    <div class="chip">⭐ <span id="hStars">0</span>/15</div>
+    <div class="chip">🛡️ <span id="hPieces">0</span>/10</div>
+    <div class="chip">🏆 <span id="hScore">0</span></div>
+    <div style="display:flex;gap:8px"><button class="iconbtn" id="sndBtn">🔊</button><button class="iconbtn" id="homeBtn">🗺️ Peta</button></div>
+  </div>
+
+  <!-- START -->
+  <section class="screen on" id="sStart">
+    <div class="title-card">
+      <div class="waves">🌊⛵🛡️🌊</div>
+      <div class="sub">Pendidikan Islam Tingkatan 4 · Bidang al-Quran · Pelajaran 2</div>
+      <h1>Pelayaran <span>Perisai</span> Al-Kahfi</h1>
+      <div class="ar ayah">قُل لَّوْ كَانَ الْبَحْرُ مِدَادًا لِّكَلِمَاتِ رَبِّي</div>
+      <div class="sub">Surah al-Kahfi, ayat 101–110 · Kumpul <b style="color:var(--sea)">10 kepingan perisai</b> daripada 10 ayat terakhir Surah al-Kahfi!</div>
+      <div class="field"><label for="nameIn">✍️ Nama pemain / kumpulan</label><input id="nameIn" maxlength="24" placeholder="Contoh: Hakim 4 Ibnu Sina"></div>
+      <div class="diffs">
+        <button class="diff" data-d="H"><span class="em">🐚</span>Level 1<small>Masa panjang · pilihan jawapan lebih sedikit</small></button>
+        <button class="diff sel" data-d="S"><span class="em">🐬</span>Level 2<small>Masa sederhana · markah ×1.5</small></button>
+        <button class="diff" data-d="C"><span class="em">🐋</span>Level 3<small>Masa singkat · lebih pengeliru · markah ×2</small></button>
+      </div>
+      <button class="btn gold" id="startBtn">⛵ MULA BELAYAR</button>
+      <div class="mt"><button class="btn ghost" id="resumeBtn" style="display:none">↻ Sambung</button></div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="screen" id="sMap">
+    <div class="mapwrap">
+      <div class="map">
+        <h2>🗺️ Lautan Kalimah</h2>
+        <p class="hint">Belayar dari pulau ke pulau. Dapat ⭐ untuk membuka pulau seterusnya.</p>
+        <div class="nodes" id="nodes"></div>
+      </div>
+      <div class="side">
+        <h3>🛡️ Perisai Al-Kahfi</h3>
+        <svg id="shield" viewBox="0 0 200 230" width="200" height="230" style="max-width:100%"></svg>
+        <p>Setiap kepingan = satu ayat (101–110).</p>
+        <p style="font-size:.92rem">“Sesiapa yang menghafaz sepuluh ayat terakhir Surah al-Kahfi, akan terhindar daripada fitnah Dajjal.” (Riwayat Muslim)</p>
+      </div>
+    </div>
+    <div class="mapbar">
+      <button class="btn ghost" id="reviewBtn">📖 Ulang Kaji Ayat</button>
+      <button class="btn gold" id="certBtn" style="display:none">🎖️ Lihat Sijil</button>
+      <button class="btn ghost" id="lbBtn">🏅 Papan Juara</button>
+    </div>
+  </section>
+
+  <section class="screen" id="sIntro">
+    <div class="panel center">
+      <div style="font-size:4.5rem" id="iEmoji">🏝️</div>
+      <h2 id="iTitle">-</h2>
+      <p style="font-size:1.35rem;font-weight:700;max-width:780px;margin:8px auto" id="iDesc">-</p>
+      <div class="meaning" id="iRule" style="max-width:780px;margin:12px auto">-</div>
+      <div class="mt" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn ghost" onclick="go('sMap')">◀ Kembali</button><button class="btn gold" id="iGo">▶ MULA!</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="sPlay"><div class="panel" id="play"></div></section>
+
+  <section class="screen" id="sResult">
+    <div class="panel center">
+      <h2 id="rTitle">-</h2>
+      <div class="stars" id="rStars"><span>★</span><span>★</span><span>★</span></div>
+      <div class="bigscore">+<span id="rScore">0</span> markah</div>
+      <p style="font-weight:700;font-size:1.2rem" id="rAcc">-</p>
+      <div class="piecegain" id="rPiece"></div>
+      <div class="badges" id="rBadge"></div>
+      <p class="meaning" id="rMsg" style="max-width:780px;margin:12px auto">-</p>
+      <div class="mt" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn ghost" id="rRetry">↻ Cuba Lagi</button><button class="btn gold" id="rNext">🗺️ Ke Peta</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="screen" id="sCert">
+    <div class="cert">
+      <div class="waves">🛡️⛵🌊</div>
+      <h2>SIJIL PERISAI AL-KAHFI</h2>
+      <p style="font-size:1.3rem;font-weight:700;margin:6px 0">Dengan ini diakui bahawa</p>
+      <div class="nm" id="cName">-</div>
+      <p style="font-size:1.3rem;font-weight:700">telah melengkapkan Perisai Al-Kahfi<br>Pelajaran 2: Surah al-Kahfi, ayat 101–110</p>
+      <div class="rank" id="cRank">-</div>
+      <div class="stars" id="cStars" style="font-size:3rem"></div>
+      <div class="bigscore"><span id="cScore">0</span> markah</div>
+      <div class="badges" id="cBadges"></div>
+      <div class="ar" style="font-size:1.9rem;margin-top:8px">فَلْيَعْمَلْ عَمَلًا صَالِحًا وَلَا يُشْرِكْ بِعِبَادَةِ رَبِّهِ أَحَدًا</div>
+      <p style="font-weight:700;color:var(--muted)">“…hendaklah ia mengerjakan amal yang soleh, dan janganlah ia mempersekutukan sesiapa pun dalam ibadatnya kepada Tuhannya.” (al-Kahfi: 110)</p>
+      <div class="mt" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+        <button class="btn ghost" onclick="go('sMap')">🗺️ Ke Peta</button><button class="btn gold" id="newGame">🔁 Pemain Baharu</button>
+      </div>
+    </div>
+  </section>
+  <footer class="pw"><a href="../">🏠 Semua game</a>@powered by alfaqih</footer>
+</div>
+
+<div class="modal" id="mReview"><div class="panel">
+  <div class="lvhead"><h2>📖 Ulang Kaji: Surah al-Kahfi 101–110</h2><button class="iconbtn" onclick="closeM('mReview')">✖ Tutup</button></div>
+  <div class="rv" id="rvList"></div>
+  <h2 class="mt" style="font-size:1.5rem">💡 Inti Sari – Unit 1 (ayat 101–106)</h2><ul class="inti" id="inti1"></ul>
+  <h2 class="mt" style="font-size:1.5rem">💡 Inti Sari – Unit 2 (ayat 107–110)</h2><ul class="inti" id="inti2"></ul>
+  <h2 class="mt" style="font-size:1.5rem">🔭 Spektrum Ilmu</h2>
+  <p style="font-weight:700">• <b>Abu Darda'</b> meriwayatkan Rasulullah ﷺ bersabda: <span class="ar" style="font-size:1.4rem">مَنْ حَفِظَ عَشْرَ آيَاتٍ مِنْ آخِرِ سُورَةِ الْكَهْفِ عُصِمَ مِنْ فِتْنَةِ الدَّجَّالِ</span> “Sesiapa yang menghafaz sepuluh ayat terakhir Surah al-Kahfi, dia akan terhindar daripada fitnah Dajjal.” (Riwayat Muslim)<br>
+  • <b>Surah Luqman, ayat 27:</b> Sekiranya segala pohon di bumi dijadikan pena, dan lautan (dijadikan tinta) ditambah tujuh lautan lagi sesudah keringnya, nescaya tidak akan habis kalimah-kalimah Allah. Sesungguhnya Allah Maha Perkasa lagi Maha Bijaksana.</p>
+  <p style="font-weight:700">🌄 Keindahan alam semula jadi merupakan tanda-tanda kekuasaan Allah.</p>
+</div></div>
+<div class="modal" id="mLb"><div class="panel">
+  <div class="lvhead"><h2>🏅 Papan Juara (peranti ini)</h2><button class="iconbtn" onclick="closeM('mLb')">✖ Tutup</button></div>
+  <table class="lb"><thead><tr><th>#</th><th>Nama</th><th>Level</th><th>⭐</th><th>Markah</th></tr></thead><tbody id="lbBody"></tbody></table>
+</div></div>
+
+<script>
+/* ================== KANDUNGAN (Buku Teks PI Tingkatan 4, Pelajaran 2) ================== */
+const AYAT = {
+101:{ar:'الَّذِينَ كَانَتْ أَعْيُنُهُمْ فِي غِطَاءٍ عَن ذِكْرِي وَكَانُوا لَا يَسْتَطِيعُونَ سَمْعًا',ms:'Orang yang matanya telah tertutup daripada melihat tanda-tanda yang membawa kepada mengingati-Ku, dan mereka pula tidak dapat mendengar sama sekali.'},
+102:{ar:'أَفَحَسِبَ الَّذِينَ كَفَرُوا أَن يَتَّخِذُوا عِبَادِي مِن دُونِي أَوْلِيَاءَ ۚ إِنَّا أَعْتَدْنَا جَهَنَّمَ لِلْكَافِرِينَ نُزُلًا',ms:'Adakah orang kafir menyangka bahawa mengambil hamba-hamba-Ku sebagai sembahan selain Aku dapat menolong mereka? Sesungguhnya Kami telah sediakan neraka Jahannam bagi orang kafir sebagai tempat tetamu.'},
+103:{ar:'قُلْ هَلْ نُنَبِّئُكُم بِالْأَخْسَرِينَ أَعْمَالًا',ms:'Katakanlah: “Mahukah Kami khabarkan kepada kamu akan orang yang paling rugi amal perbuatannya?”'},
+104:{ar:'الَّذِينَ ضَلَّ سَعْيُهُمْ فِي الْحَيَاةِ الدُّنْيَا وَهُمْ يَحْسَبُونَ أَنَّهُمْ يُحْسِنُونَ صُنْعًا',ms:'Orang yang sia-sia usahanya dalam kehidupan dunia ini, sedang mereka menyangka bahawa mereka sentiasa betul pada apa yang dilakukan.'},
+105:{ar:'أُولَٰئِكَ الَّذِينَ كَفَرُوا بِآيَاتِ رَبِّهِمْ وَلِقَائِهِ فَحَبِطَتْ أَعْمَالُهُمْ فَلَا نُقِيمُ لَهُمْ يَوْمَ الْقِيَامَةِ وَزْنًا',ms:'Merekalah orang yang ingkar akan ayat-ayat Tuhan mereka dan pertemuan dengan-Nya, maka gugurlah amal-amal mereka; Kami tidak akan memberikan timbangan untuk menilai amal mereka pada hari kiamat.'},
+106:{ar:'ذَٰلِكَ جَزَاؤُهُمْ جَهَنَّمُ بِمَا كَفَرُوا وَاتَّخَذُوا آيَاتِي وَرُسُلِي هُزُوًا',ms:'Demikianlah, balasan mereka ialah neraka Jahannam disebabkan mereka ingkar, dan mereka menjadikan ayat-ayat-Ku dan rasul-rasul-Ku sebagai ejek-ejekan.'},
+107:{ar:'إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ كَانَتْ لَهُمْ جَنَّاتُ الْفِرْدَوْسِ نُزُلًا',ms:'Sesungguhnya orang yang beriman dan beramal soleh, disediakan bagi mereka syurga-syurga Firdaus sebagai tempat tetamu.'},
+108:{ar:'خَالِدِينَ فِيهَا لَا يَبْغُونَ عَنْهَا حِوَلًا',ms:'Mereka kekal di dalamnya, dan tidak ingin berpindah daripadanya.'},
+109:{ar:'قُل لَّوْ كَانَ الْبَحْرُ مِدَادًا لِّكَلِمَاتِ رَبِّي لَنَفِدَ الْبَحْرُ قَبْلَ أَن تَنفَدَ كَلِمَاتُ رَبِّي وَلَوْ جِئْنَا بِمِثْلِهِ مَدَدًا',ms:'Katakanlah: “Kalau semua lautan menjadi tinta untuk menulis kalimah-kalimah Tuhanku, sudah tentu akan habis kering lautan itu sebelum habis kalimah-kalimah Tuhanku, walaupun Kami tambahi lagi dengan lautan yang sebanding dengannya.”'},
+110:{ar:'قُلْ إِنَّمَا أَنَا بَشَرٌ مِّثْلُكُمْ يُوحَىٰ إِلَيَّ أَنَّمَا إِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ ۖ فَمَن كَانَ يَرْجُو لِقَاءَ رَبِّهِ فَلْيَعْمَلْ عَمَلًا صَالِحًا وَلَا يُشْرِكْ بِعِبَادَةِ رَبِّهِ أَحَدًا',ms:'Katakanlah: “Sesungguhnya aku hanyalah manusia seperti kamu, diwahyukan kepadaku bahawa Tuhan kamu hanyalah Tuhan yang satu; maka sesiapa yang berharap akan pertemuan dengan Tuhannya, hendaklah ia mengerjakan amal soleh dan janganlah ia mempersekutukan sesiapa pun dalam ibadatnya kepada Tuhannya.”'},
+};
+const INTI1=['Orang yang telah tertutup pintu hatinya tidak akan dapat melihat tanda-tanda kekuasaan Allah.','Allah menyediakan neraka Jahannam bagi sesiapa sahaja yang mensyirikkan-Nya.','Orang yang mempersendakan ayat Allah dan menghina para rasul-Nya ialah golongan yang rugi.','Orang yang ingkar perintah Allah akan ditolak amal kebaikannya pada hari kiamat kelak.'];
+const INTI2=['Allah menganugerahkan syurga Firdaus kepada orang yang beriman dan beramal soleh.','Orang yang beramal soleh akan kekal di dalam syurga Firdaus.','Kehebatan dan keluasan ilmu Allah tiada tandingan.','Para rasul dilantik dalam kalangan manusia yang diberikan wahyu untuk disampaikan kepada umat.','Orang yang rindu untuk bertemu dengan Tuhan akan sentiasa beramal soleh serta menjauhi perbuatan syirik.'];
+
+/* Pulau 1: rangkaian potongan ayat 101-106 */
+const CHAIN=[
+ ['الَّذِينَ كَانَتْ أَعْيُنُهُمْ فِي غِطَاءٍ عَن ذِكْرِي',101],['وَكَانُوا لَا يَسْتَطِيعُونَ سَمْعًا',101],
+ ['أَفَحَسِبَ الَّذِينَ كَفَرُوا أَن يَتَّخِذُوا',102],['عِبَادِي مِن دُونِي أَوْلِيَاءَ',102],['إِنَّا أَعْتَدْنَا جَهَنَّمَ لِلْكَافِرِينَ نُزُلًا',102],
+ ['قُلْ هَلْ نُنَبِّئُكُم بِالْأَخْسَرِينَ أَعْمَالًا',103],
+ ['الَّذِينَ ضَلَّ سَعْيُهُمْ فِي الْحَيَاةِ الدُّنْيَا',104],['وَهُمْ يَحْسَبُونَ أَنَّهُمْ يُحْسِنُونَ صُنْعًا',104],
+ ['أُولَٰئِكَ الَّذِينَ كَفَرُوا بِآيَاتِ رَبِّهِمْ وَلِقَائِهِ',105],['فَحَبِطَتْ أَعْمَالُهُمْ فَلَا نُقِيمُ لَهُمْ يَوْمَ الْقِيَامَةِ وَزْنًا',105],
+ ['ذَٰلِكَ جَزَاؤُهُمْ جَهَنَّمُ بِمَا كَفَرُوا',106],['وَاتَّخَذُوا آيَاتِي وَرُسُلِي هُزُوًا',106],
+];
+/* Pulau 2: dua jalan  r=rugi f=firdaus */
+const PATHS=[
+ {t:'Mata tertutup daripada melihat tanda-tanda yang membawa kepada mengingati Allah',p:'r',ref:'Ayat 101'},
+ {t:'Menyangka makhluk yang disembah selain Allah dapat menolong mereka',p:'r',ref:'Ayat 102'},
+ {t:'Sia-sia usahanya di dunia tetapi menyangka dirinya sentiasa betul',p:'r',ref:'Ayat 104'},
+ {t:'Ingkar akan ayat-ayat Tuhan dan pertemuan dengan-Nya',p:'r',ref:'Ayat 105'},
+ {t:'Amalan gugur dan tidak diberi timbangan pada hari kiamat',p:'r',ref:'Ayat 105'},
+ {t:'Menjadikan ayat-ayat Allah dan rasul-rasul-Nya sebagai ejek-ejekan',p:'r',ref:'Ayat 106'},
+ {t:'Beriman dan beramal soleh',p:'f',ref:'Ayat 107'},
+ {t:'Disediakan syurga Firdaus sebagai tempat tetamu',p:'f',ref:'Ayat 107'},
+ {t:'Kekal di dalam syurga dan tidak ingin berpindah daripadanya',p:'f',ref:'Ayat 108'},
+ {t:'Berharap bertemu Tuhannya lalu mengerjakan amal soleh',p:'f',ref:'Ayat 110'},
+ {t:'Tidak mempersekutukan sesiapa pun dalam ibadat kepada Tuhannya',p:'f',ref:'Ayat 110'},
+ {t:'Melihat keindahan alam sebagai tanda kekuasaan Allah',p:'f',ref:'Nota buku teks & ayat 101'},
+];
+/* Pulau 4: gelembung kalimah 107-110 */
+const BUB=[
+ {pre:'إِنَّ الَّذِينَ آمَنُوا وَعَمِلُوا',post:'',a:'الصَّالِحَاتِ',o:['السَّيِّئَاتِ','الْخَيْرَاتِ','الْحَسَنَاتِ'],ay:107},
+ {pre:'كَانَتْ لَهُمْ جَنَّاتُ',post:'نُزُلًا',a:'الْفِرْدَوْسِ',o:['عَدْنٍ','النَّعِيمِ','الْمَأْوَىٰ'],ay:107},
+ {pre:'خَالِدِينَ فِيهَا لَا يَبْغُونَ عَنْهَا',post:'',a:'حِوَلًا',o:['أَبَدًا','مَدَدًا','نُزُلًا'],ay:108},
+ {pre:'قُل لَّوْ كَانَ',post:'مِدَادًا لِّكَلِمَاتِ رَبِّي',a:'الْبَحْرُ',o:['النَّهْرُ','الْمَاءُ','الْجَبَلُ'],ay:109},
+ {pre:'لَنَفِدَ الْبَحْرُ قَبْلَ أَن تَنفَدَ',post:'رَبِّي',a:'كَلِمَاتُ',o:['آيَاتُ','نِعَمُ','رَحْمَةُ'],ay:109},
+ {pre:'وَلَوْ جِئْنَا بِمِثْلِهِ',post:'',a:'مَدَدًا',o:['نُزُلًا','حِوَلًا','أَحَدًا'],ay:109},
+ {pre:'قُلْ إِنَّمَا أَنَا',post:'مِّثْلُكُمْ',a:'بَشَرٌ',o:['نَبِيٌّ','مَلَكٌ','عَبْدٌ'],ay:110},
+ {pre:'يُوحَىٰ إِلَيَّ أَنَّمَا إِلَٰهُكُمْ إِلَٰهٌ',post:'',a:'وَاحِدٌ',o:['عَظِيمٌ','كَرِيمٌ','رَحِيمٌ'],ay:110},
+ {pre:'فَمَن كَانَ يَرْجُو',post:'رَبِّهِ',a:'لِقَاءَ',o:['رَحْمَةَ','رِضَا','نِعْمَةَ'],ay:110},
+ {pre:'فَلْيَعْمَلْ عَمَلًا',post:'',a:'صَالِحًا',o:['كَثِيرًا','خَالِصًا','عَظِيمًا'],ay:110},
+ {pre:'وَلَا يُشْرِكْ بِعِبَادَةِ رَبِّهِ',post:'',a:'أَحَدًا',o:['شَيْئًا','أَبَدًا','مَدَدًا'],ay:110},
+];
+/* Pulau 5: soalan boss */
+const BOSS=[
+ {q:'Menurut hadis Abu Darda\', sesiapa yang menghafaz sepuluh ayat terakhir Surah al-Kahfi akan…',o:['Terhindar daripada fitnah Dajjal','Mendapat rezeki yang banyak','Dimudahkan urusan peperiksaan','Dijauhkan daripada penyakit'],a:0,ex:'Hadis riwayat Muslim daripada Abu Darda\'.'},
+ {q:'Siapakah perawi hadis kelebihan menghafaz sepuluh ayat terakhir Surah al-Kahfi?',o:['Ibnu Umar','Abu Darda\'','Ali bin Abu Talib','Anas bin Malik'],a:1,ex:'Abu Darda\' (Riwayat Muslim).'},
+ {q:'Surah al-Kahfi ialah surah yang ke berapa dalam al-Quran?',o:['Ke-6','Ke-18','Ke-31','Ke-36'],a:1,ex:'Surah al-Kahfi ialah surah ke-18.'},
+ {q:'Ayat 109 menggambarkan lautan dijadikan tinta. Apakah pengajarannya?',o:['Lautan sangat luas','Kehebatan dan keluasan ilmu Allah tiada tandingan','Manusia perlu menjaga laut','Tinta dibuat daripada air laut'],a:1,ex:'Inti sari: kehebatan dan keluasan ilmu Allah tiada tandingan.'},
+ {q:'Menurut Surah Luqman ayat 27, berapa lautan tambahan yang disebut sesudah lautan kering?',o:['Tiga','Lima','Tujuh','Sepuluh'],a:2,ex:'Ditambah tujuh lautan lagi, kalimah Allah tetap tidak habis.'},
+ {q:'Apakah ganjaran bagi orang yang beriman dan beramal soleh menurut ayat 107?',o:['Harta yang melimpah','Syurga Firdaus sebagai tempat tetamu','Pangkat di dunia','Umur yang panjang'],a:1,ex:'“…kanat lahum jannatul firdausi nuzula.”'},
+ {q:'Siapakah golongan yang paling rugi amalannya menurut ayat 103–104?',o:['Orang yang miskin harta','Orang yang sia-sia usaha di dunia tetapi menyangka dirinya betul','Orang yang sakit','Orang yang tidak bersekolah'],a:1,ex:'Mereka menyangka telah berbuat baik, sedangkan usaha mereka sia-sia.'},
+ {q:'Ayat 110 menyatakan dua syarat bagi orang yang berharap bertemu Tuhannya. Apakah syarat itu?',o:['Kaya dan berilmu','Beramal soleh dan tidak menyekutukan Allah','Berpuasa dan bermusafir','Berzikir dan tidur awal'],a:1,ex:'“Falya‘mal ‘amalan salihan wa la yusyrik bi‘ibadati rabbihi ahada.”'},
+ {q:'Ayat 110 menjelaskan bahawa para rasul dilantik daripada kalangan…',o:['Malaikat','Jin','Manusia yang diberikan wahyu','Raja-raja'],a:2,ex:'“Sesungguhnya aku hanyalah manusia seperti kamu, diwahyukan kepadaku…”'},
+ {q:'Menurut ayat 105, apakah yang berlaku kepada amalan orang yang ingkar?',o:['Digandakan pahalanya','Gugur dan tidak diberi timbangan pada hari kiamat','Diterima sebahagian','Ditangguhkan'],a:1,ex:'“Fahabitat a‘maluhum…” – amalan mereka gugur.'},
+ {q:'Situasi: Rakan anda menjadikan ayat al-Quran sebagai bahan lawak di media sosial. Menurut ayat 106, perbuatan ini…',o:['Hanya gurauan biasa','Perbuatan golongan yang balasannya neraka Jahannam','Dibolehkan jika tiada niat jahat','Satu kreativiti'],a:1,ex:'Mereka menjadikan ayat-ayat-Ku dan rasul-rasul-Ku sebagai ejek-ejekan.'},
+ {q:'Situasi: Pak Mat rajin bersedekah tetapi memakai tangkal kerana percaya tangkal itu melindunginya. Pengajaran ayat 110 kepadanya ialah…',o:['Amal soleh mesti disertai dengan tidak menyekutukan Allah','Sedekah lebih penting daripada akidah','Tangkal boleh jika bersedekah','Amalan tidak perlu ikhlas'],a:0,ex:'Beramal soleh dan jangan menyekutukan Allah dalam ibadat.'},
+ {q:'Hukum tajwid pada “مِن دُونِي”:',o:['Izhar halqi','Ikhfa\' haqiqi','Idgham bila ghunnah','Iqlab'],a:1,ex:'Nun sakinah bertemu huruf dal – ikhfa\' haqiqi.'},
+ {q:'Hukum tajwid pada “بَشَرٌ مِّثْلُكُمْ”:',o:['Idgham ma‘al ghunnah','Izhar halqi','Ikhfa\' haqiqi','Iqlab'],a:0,ex:'Tanwin bertemu huruf mim – idgham ma‘al ghunnah.'},
+ {q:'Hukum mad pada “جَزَاؤُهُمْ”:',o:['Mad asli','Mad wajib muttasil','Mad jaiz munfasil','Mad ‘iwad'],a:1,ex:'Huruf mad bertemu hamzah dalam satu kalimah – mad wajib muttasil.'},
+ {q:'Bacaan apabila waqaf pada “أَحَدًا” di hujung ayat 110:',o:['Mad ‘arid lissukun','Mad ‘iwad','Mad lazim','Mad lin'],a:1,ex:'Tanwin baris dua di atas ditukar kepada alif ketika waqaf – mad ‘iwad.'},
+ {q:'Huruf ب dalam “قَبْلَ” dibaca dengan hukum…',o:['Qalqalah sughra','Qalqalah kubra','Ghunnah','Izhar syafawi'],a:0,ex:'Huruf qalqalah bersukun di tengah kalimah – qalqalah sughra.'},
+ {q:'Apakah maksud “خَالِدِينَ فِيهَا لَا يَبْغُونَ عَنْهَا حِوَلًا”?',o:['Mereka kekal di dalamnya dan tidak ingin berpindah daripadanya','Mereka keluar daripadanya','Mereka dihukum di dalamnya','Mereka meminta lebih lagi'],a:0,ex:'Maksud ayat 108.'},
+ {q:'Menurut nota buku teks, keindahan alam semula jadi merupakan…',o:['Hasil ciptaan manusia','Tanda-tanda kekuasaan Allah','Tempat untuk berhibur sahaja','Kejadian secara kebetulan'],a:1,ex:'Orang yang tertutup hatinya tidak dapat melihat tanda-tanda kekuasaan Allah.'},
+];
+
+/* ================== TETAPAN ================== */
+const DIFF={
+ H:{label:'Level 1',emo:'🐚',mult:1,time:25,opts:2,bubT:15,lives:4,n:8},
+ S:{label:'Level 2',emo:'🐬',mult:1.5,time:18,opts:3,bubT:11,lives:3,n:10},
+ C:{label:'Level 3',emo:'🐋',mult:2,time:12,opts:4,bubT:8,lives:3,n:10},
+};
+const LEVELS=[
+ {emo:'🌉',name:'Pulau Jambatan',title:'Pulau 1: Jambatan Ayat (101–106)',x:13,y:78,pieces:[101,102,103],
+  desc:'Bina jambatan menyeberangi laut! Setiap papan = potongan ayat. Pilih sambungan bacaan yang betul untuk ayat 101 hingga 106.',
+  rule:'🪵 Betul = papan jambatan bertambah · ⏱️ Jawab cepat = bonus masa',badge:{e:'🌉',n:'Pembina Jambatan'}},
+ {emo:'⚖️',name:'Pulau Dua Jalan',title:'Pulau 2: Dua Jalan – Rugi atau Firdaus?',x:35,y:44,pieces:[104,105,106],
+  desc:'Baca gulungan. Adakah ia sifat Golongan Rugi (ayat 101–106) atau Ahli Firdaus (ayat 107–110)? Pilih jalan yang betul!',
+  rule:'🔥 Jawab betul berturut-turut untuk bonus kombo!',badge:{e:'⚖️',n:'Penimbang Dua Jalan'}},
+ {emo:'🔢',name:'Pulau Nombor',title:'Pulau 3: Jejak Nombor Ayat',x:55,y:74,pieces:[107,108],
+  desc:'Baca maksud (atau potongan ayat). Teka nombor ayatnya: 101 hingga 110!',
+  rule:'🧭 Level 1: 4 pilihan · Level 2: 10 nombor · Level 3: 10 nombor + potongan ayat Arab',badge:{e:'🧭',n:'Penjejak Ayat'}},
+ {emo:'🫧',name:'Pulau Gelembung',title:'Pulau 4: Pemburu Gelembung Kalimah (107–110)',x:72,y:30,pieces:[109],
+  desc:'Gelembung kalimah naik dari dasar laut! Pecahkan gelembung yang melengkapkan ayat sebelum ia terlepas ke udara.',
+  rule:'🫧 Sentuh gelembung yang betul · Gelembung salah = rugi · Terlepas = rugi',badge:{e:'🫧',n:'Pemburu Kalimah'}},
+ {emo:'🛡️',name:'Kubu Perisai',title:'Pulau 5: Tewaskan Raksasa Fitnah!',x:89,y:62,pieces:[110],
+  desc:'Cabaran akhir! Jawab soalan Spektrum Ilmu, inti sari, tajwid dan situasi untuk melemahkan Raksasa Fitnah dan melengkapkan Perisai Al-Kahfi.',
+  rule:'❤️ Nyawa terhad · Setiap jawapan betul = serangan kepada Raksasa Fitnah',badge:{e:'🛡️',n:'Perisai Al-Kahfi'}},
+];
+
+/* ================== KEADAAN ================== */
+const KEY='pai4_p2_perisai_v1';
+let S=fresh();
+function fresh(){return{name:'',diff:'S',lv:LEVELS.map(()=>({stars:0,score:0}))}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function load(){try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&v.lv)return v}catch(e){}return null}
+let sound=true;
+const $=id=>document.getElementById(id);
+const shuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}return a};
+const totalStars=()=>S.lv.reduce((s,l)=>s+l.stars,0);
+const totalScore=()=>S.lv.reduce((s,l)=>s+l.score,0);
+const pieces=()=>LEVELS.flatMap((L,i)=>S.lv[i].stars?L.pieces:[]);
+function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('on'));$(id).classList.add('on');$('hud').style.display=id==='sStart'?'none':'flex';
+  if(id==='sMap')renderMap();updHud();window.scrollTo({top:0,behavior:'smooth'});stopTimer();clearBubbles()}
+function updHud(){$('hName').textContent=S.name||'-';$('hDiff').textContent=DIFF[S.diff].emo+' '+DIFF[S.diff].label;$('hStars').textContent=totalStars();$('hScore').textContent=totalScore();$('hPieces').textContent=pieces().length}
+function closeM(id){$(id).classList.remove('on')}
+function toast(t,c){const e=$('toast');e.textContent=t;e.style.color=c||'var(--sea)';e.classList.remove('go');void e.offsetWidth;e.classList.add('go')}
+let AC=null;
+function beep(type){if(!sound)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();
+ const seq={ok:[[660,.08],[880,.12]],no:[[220,.18],[160,.2]],win:[[523,.1],[659,.1],[784,.1],[1046,.3]],tap:[[520,.05]],star:[[988,.12]],pop:[[1200,.05],[900,.06]],hit:[[140,.12],[90,.15]]}[type]||[[440,.1]];
+ let t=AC.currentTime;seq.forEach(([f,d])=>{const o=AC.createOscillator(),g=AC.createGain();o.type=(type==='no'||type==='hit')?'sawtooth':'triangle';o.frequency.value=f;g.gain.setValueAtTime(.18,t);g.gain.exponentialRampToValueAtTime(.001,t+d);o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+d+.02);t+=d*.9})}catch(e){}}
+const cv=$('fx'),cx=cv.getContext('2d');let parts=[];
+function rs(){cv.width=innerWidth;cv.height=innerHeight}addEventListener('resize',rs);rs();
+function confetti(n=140){const cols=['#F5A700','#0A6FB5','#E0473C','#18A0D8','#7B4FD6','#1FA35A'];const st=!parts.length;
+ for(let i=0;i<n;i++)parts.push({x:innerWidth/2,y:innerHeight*.35,vx:(Math.random()-.5)*16,vy:Math.random()*-14-4,r:Math.random()*8+5,c:cols[i%6],a:Math.random()*6,life:120+Math.random()*60});if(st)loop()}
+function loop(){cx.clearRect(0,0,cv.width,cv.height);parts.forEach(p=>{p.vy+=.35;p.x+=p.vx;p.y+=p.vy;p.a+=.2;p.life--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.a);cx.fillStyle=p.c;cx.fillRect(-p.r/2,-p.r/3,p.r,p.r*.6);cx.restore()});
+ parts=parts.filter(p=>p.life>0&&p.y<cv.height+40);if(parts.length)requestAnimationFrame(loop);else cx.clearRect(0,0,cv.width,cv.height)}
+let tmr=null;
+function startTimer(sec,onEnd,el){stopTimer();const s0=performance.now();const bar=el.querySelector('i');
+ tmr=setInterval(()=>{const left=sec-(performance.now()-s0)/1000;const p=Math.max(0,left/sec);bar.style.width=(p*100)+'%';el.classList.toggle('warn',p<.3);if(left<=0){stopTimer();onEnd()}},80);
+ return()=>Math.max(0,sec-(performance.now()-s0)/1000)}
+function stopTimer(){if(tmr){clearInterval(tmr);tmr=null}}
+
+/* ================== MULA ================== */
+document.querySelectorAll('.diff').forEach(b=>b.onclick=()=>{document.querySelectorAll('.diff').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');S.diff=b.dataset.d;beep('tap')});
+$('startBtn').onclick=()=>{const n=$('nameIn').value.trim();if(!n){$('nameIn').classList.add('shake');$('nameIn').focus();setTimeout(()=>$('nameIn').classList.remove('shake'),400);return}const d=S.diff;S=fresh();S.name=n;S.diff=d;save();beep('win');go('sMap')};
+$('nameIn').addEventListener('keydown',e=>{if(e.key==='Enter')$('startBtn').click()});
+const old=load();if(old&&old.name){$('resumeBtn').style.display='inline-flex';$('resumeBtn').textContent='↻ Sambung sebagai '+old.name;$('resumeBtn').onclick=()=>{S=old;go('sMap')}}
+$('homeBtn').onclick=()=>go('sMap');
+$('sndBtn').onclick=()=>{sound=!sound;$('sndBtn').textContent=sound?'🔊':'🔇'};
+$('reviewBtn').onclick=()=>$('mReview').classList.add('on');
+$('lbBtn').onclick=()=>{renderLb();$('mLb').classList.add('on')};
+$('certBtn').onclick=showCert;
+$('newGame').onclick=()=>{$('nameIn').value='';go('sStart')};
+const AN=n=>String(n).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);
+$('rvList').innerHTML=Object.entries(AYAT).map(([n,a])=>`<div class="ar">${a.ar} ۝${AN(n)}</div><div class="ms">(${n}) ${a.ms}</div>`).join('');
+$('inti1').innerHTML=INTI1.map(t=>`<li>${t}</li>`).join('');
+$('inti2').innerHTML=INTI2.map(t=>`<li>${t}</li>`).join('');
+
+/* ================== PETA ================== */
+function unlocked(i){return i===0||S.lv[i-1].stars>0}
+function renderMap(){
+ let boatAt=0;for(let i=0;i<LEVELS.length;i++)if(unlocked(i))boatAt=i;
+ $('nodes').innerHTML=LEVELS.map((L,i)=>{const st=S.lv[i].stars,u=unlocked(i);const cls=st?'done':u?'open':'lock';
+  return `<button class="isle ${cls}" style="left:${L.x}%;top:${L.y}%" data-i="${i}"><div class="orb">${u?(st?'✅':L.emo):'🔒'}</div><div class="nm">${L.name}</div><div class="st">${st?'★'.repeat(st)+'☆'.repeat(3-st):''}</div></button>`}).join('')+
+  `<div class="boat" style="left:${LEVELS[boatAt].x+7}%;top:${LEVELS[boatAt].y}%">⛵</div>`;
+ $('nodes').querySelectorAll('.isle').forEach(b=>b.onclick=()=>{const i=+b.dataset.i;if(!unlocked(i)){b.classList.add('shake');beep('no');setTimeout(()=>b.classList.remove('shake'),400);return}beep('tap');intro(i)});
+ drawShield();
+ $('certBtn').style.display=S.lv.every(l=>l.stars>0)?'inline-flex':'none';
+}
+function drawShield(hl=[]){
+ const got=pieces();const cxp=100,cyp=108,R=92,r0=34;let s=`<path d="M100 6 L190 40 Q190 160 100 224 Q10 160 10 40 Z" fill="#EAF6FD" stroke="#0A6FB5" stroke-width="5"/>`;
+ for(let k=0;k<10;k++){const a0=(-90+k*36)*Math.PI/180,a1=(-90+(k+1)*36)*Math.PI/180;const n=101+k;const on=got.includes(n);
+  const p=(a,r)=>[cxp+r*Math.cos(a),cyp+r*Math.sin(a)];const[x1,y1]=p(a0,r0),[x2,y2]=p(a0,R-18),[x3,y3]=p(a1,R-18),[x4,y4]=p(a1,r0);
+  s+=`<path d="M${x1} ${y1} L${x2} ${y2} A${R-18} ${R-18} 0 0 1 ${x3} ${y3} L${x4} ${y4} A${r0} ${r0} 0 0 0 ${x1} ${y1}Z" fill="${on?(hl.includes(n)?'#FFB23F':'#F5C842'):'#D7E4EE'}" stroke="#fff" stroke-width="3"/>`;
+  const[tx,ty]=p((a0+a1)/2,(R-18+r0)/2);s+=`<text x="${tx}" y="${ty+5}" text-anchor="middle" font-size="13" font-weight="800" fill="${on?'#5A3A00':'#8AA0B2'}" font-family="Baloo 2">${n}</text>`}
+ s+=`<circle cx="${cxp}" cy="${cyp}" r="${r0-4}" fill="${got.length===10?'#1FA35A':'#0A6FB5'}"/><text x="${cxp}" y="${cyp+8}" text-anchor="middle" font-size="22" fill="#fff" font-weight="800" font-family="Baloo 2">${got.length}/10</text>`;
+ $('shield').innerHTML=s}
+
+/* ================== INTRO ================== */
+function intro(i){const L=LEVELS[i];$('iEmoji').textContent=L.emo;$('iTitle').textContent=L.title;$('iDesc').textContent=L.desc;$('iRule').textContent=L.rule;$('iGo').onclick=()=>startLevel(i);go('sIntro')}
+function startLevel(i){go('sPlay');[lvBridge,lvPaths,lvNumber,lvBubble,lvBoss][i]()}
+function head(title,extra=''){return `<div class="lvhead"><span class="tag">${title}</span><div class="prog"><i id="pg"></i></div>${extra}</div>`}
+function setProg(a,b){const p=$('pg');if(p)p.style.width=(a/b*100)+'%'}
+const keys=['A','B','C','D'];
+
+/* ================== ENJIN KUIZ ================== */
+function quiz(cfg){
+ const d=S.diff,m=DIFF[d].mult;let i=0,score=0,ok=0,streak=0,best=0,lives=cfg.lives||0,hp=100;const Q=cfg.qs;
+ function draw(){
+  const q=Q[i];
+  $('play').innerHTML=head(cfg.tag+' '+(i+1)+'/'+Q.length,(cfg.lives?`<span class="lives" id="lv">${'❤️'.repeat(lives)}${'🖤'.repeat(cfg.lives-lives)}</span>`:'')+`<span class="combo">${streak>=2?'🔥 x'+streak:''}</span>`)+
+   (cfg.boss?`<div class="boss"><div class="face" id="bf">👹</div><div style="flex:1"><b>Raksasa Fitnah</b><div class="hp"><i id="hpb" style="width:${hp}%"></i></div></div></div>`:'')+
+   (cfg.pre?cfg.pre(i,ok):'')+`<div class="timer" id="tm"><i></i></div>`+cfg.render(q)+`<div class="feedback" id="fb"></div>`;
+  setProg(i,Q.length);
+  const left=startTimer(DIFF[d].time,()=>answer(-1),$('tm'));
+  document.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>answer(+b.dataset.o));
+  function answer(ch){stopTimer();const right=ch===q.ans;
+   document.querySelectorAll('[data-o]').forEach(b=>{b.disabled=true;const o=+b.dataset.o;if(cfg.dimmode){if(o!==q.ans)b.classList.add('dim');else b.classList.add('ring')}else{if(o===q.ans)b.classList.add('ok');else if(o===ch)b.classList.add('no')}});
+   const fb=$('fb');
+   if(right){ok++;streak++;best=Math.max(best,streak);const tb=Math.round(left()*5);const cb=streak>=3?50:0;const g=Math.round((100+tb+cb)*m);score+=g;beep(cfg.boss?'hit':'ok');
+    if(cfg.boss){hp=Math.max(0,hp-(streak>=3?14:11));$('hpb').style.width=hp+'%';$('bf').classList.add('hit');if(hp===0)$('bf').textContent='💫'}
+    if(cfg.onRight)cfg.onRight(i,ok);
+    toast(streak>=3?'🔥 KOMBO x'+streak+'!':['Hebat!','Tepat!','MasyaAllah!','Syabas!'][Math.random()*4|0],'var(--green)');
+    fb.className='feedback show good';fb.innerHTML=`✅ <b>Betul! +${g}</b> (bonus masa ${tb}${cb?', kombo '+cb:''})<br>${q.ex||''}`}
+   else{streak=0;beep('no');if(cfg.lives){lives--;$('lv').textContent='❤️'.repeat(lives)+'🖤'.repeat(cfg.lives-lives)}
+    fb.className='feedback show bad';fb.innerHTML=`${ch===-1?'⏰ <b>Masa tamat!</b>':'❌ <b>Kurang tepat.</b>'}<br>${q.ex||''}`}
+   const more=i+1<Q.length&&!(cfg.lives&&lives<=0)&&!(cfg.boss&&hp===0);
+   fb.innerHTML+=`<div class="center mt"><button class="btn gold" id="nx">${more?'Seterusnya ▶':'Lihat keputusan ✔'}</button></div>`;
+   $('nx').onclick=()=>{i++;more?draw():end()};$('nx').focus()}
+ }
+ function end(){const acc=ok/Q.length;let extra='';
+  if(cfg.boss){extra=hp===0?' · 💫 Raksasa Fitnah tumpas!':lives<=0?' · 💔 Nyawa habis!':` · Raksasa tinggal ${hp}%`}
+  const accAdj=cfg.boss&&hp===0?Math.max(acc,ok/Math.max(i,1)):acc;
+  result(cfg.lvl,score,accAdj,`Betul ${ok} / ${cfg.boss&&hp===0?i:Q.length} · Kombo terbaik ${best}`+extra)}
+ draw();
+}
+
+/* Pulau 1: Jambatan */
+function lvBridge(){
+ const k=DIFF[S.diff].opts;const total=CHAIN.length-1;
+ const qs=[];for(let j=1;j<CHAIN.length;j++){const right=CHAIN[j][0];const pool=shuf(CHAIN.filter((c,x)=>x!==j&&x!==j-1).map(c=>c[0])).slice(0,k-1);const o=shuf([right,...pool]);
+  qs.push({prev:CHAIN[j-1][0],prevAy:CHAIN[j-1][1],opts:o,ans:o.indexOf(right),ex:`Ayat ${CHAIN[j][1]}: <span class="ar" style="font-size:1.4rem">${right}</span>`})}
+ let built=0;
+ quiz({lvl:0,tag:'🌉 Jambatan',qs,onRight:()=>{built++},
+  pre:(i)=>`<div class="bridge">${Array.from({length:total},(_,x)=>x===built?'<div class="plank boat">⛵</div>':`<div class="plank ${x<built?'on':''}"></div>`).join('')}</div>`,
+  render:q=>`<div class="qbox"><div class="q">Apakah sambungan bacaan selepas potongan ini? <span style="color:var(--muted)">(ayat ${q.prevAy})</span></div><div class="prev ar mt">${q.prev} …</div></div>
+   <div class="opts" style="grid-template-columns:1fr">${q.opts.map((o,j)=>`<button class="opt ar" data-o="${j}"><span class="k">${keys[j]}</span>${o}</button>`).join('')}</div>`});
+}
+/* Pulau 2: Dua jalan */
+function lvPaths(){
+ quiz({lvl:1,tag:'⚖️ Dua Jalan',dimmode:true,qs:shuf(PATHS).slice(0,DIFF[S.diff].n).map(p=>({...p,ans:p.p==='r'?0:1,ex:`${p.p==='r'?'🔥 Golongan Rugi':'🌴 Ahli Firdaus'} — ${p.ref}`})),
+  render:q=>`<div class="scroll">📜 ${q.t}</div><div class="paths"><button class="opt r" data-o="0"><span class="big">🔥</span>Golongan Rugi</button><button class="opt f" data-o="1"><span class="big">🌴</span>Ahli Firdaus</button></div>`});
+}
+/* Pulau 3: Nombor ayat */
+function lvNumber(){
+ const d=S.diff;const nums=Object.keys(AYAT).map(Number);
+ quiz({lvl:2,tag:'🧭 Nombor Ayat',qs:shuf(nums).slice(0,DIFF[d].n).map(n=>{let o=d==='H'?shuf([n,...shuf(nums.filter(x=>x!==n)).slice(0,3)]):nums.slice();
+   const words=AYAT[n].ar.split(' ');return{n,opts:o,ans:o.indexOf(n),clue:d==='C'?words.slice(0,Math.min(5,words.length)).join(' ')+' …':AYAT[n].ms,ex:`Ayat ${n}: <span class="ar" style="font-size:1.35rem">${AYAT[n].ar}</span>`}}),
+  render:q=>`<div class="qbox"><div class="q">${S.diff==='C'?'Potongan ayat ini ialah ayat ke berapa?':'Maksud ini ialah ayat ke berapa?'}</div>${S.diff==='C'?`<div class="ar qa">${q.clue}</div>`:`<div class="scroll mt" style="margin-bottom:0">“${q.clue}”</div>`}</div>
+   <div class="numgrid" style="${S.diff==='H'?'grid-template-columns:repeat(2,1fr)':''}">${q.opts.map((o,j)=>`<button class="opt" data-o="${j}">${o}</button>`).join('')}</div>`});
+}
+/* Pulau 4: Gelembung */
+let bubTimers=[];
+function clearBubbles(){bubTimers.forEach(clearTimeout);bubTimers=[]}
+function lvBubble(){
+ const d=S.diff,m=DIFF[d].mult,k=DIFF[d].opts;const Q=shuf(BUB).slice(0,8);let i=0,ok=0,score=0,streak=0,best=0;
+ function draw(){
+  clearBubbles();const q=Q[i];const words=shuf([q.a,...shuf(q.o).slice(0,Math.max(1,k-1)+ (d==='H'?0:0))]);
+  $('play').innerHTML=head('🫧 Gelembung '+(i+1)+'/'+Q.length,`<span class="combo">${streak>=2?'🔥 x'+streak:''}</span>`)+
+   `<div class="qbox" style="margin-bottom:10px"><div class="q">Pecahkan gelembung yang melengkapkan ayat ${q.ay}:</div><div class="ar qa">${q.pre} <span style="color:var(--gold);border-bottom:5px solid var(--gold);padding:0 30px">؟</span> ${q.post}</div></div>
+   <div class="sea" id="sea"></div><div class="feedback" id="fb"></div>`;
+  setProg(i,Q.length);
+  const sea=$('sea');const W=sea.clientWidth;const T=DIFF[d].bubT;let done=false;const t0=performance.now();
+  const slots=shuf(words.map((_,j)=>j));
+  words.forEach((w,j)=>{const b=document.createElement('button');b.className='bub';b.textContent=w;const lane=slots[j];const n=words.length;
+   b.style.left=Math.max(6,Math.min(W-156,(W/n)*lane+((W/n)-150)/2))+'px';
+   const delay=j*0.6;b.style.animationDuration=T+'s';b.style.animationDelay=delay+'s';
+   b.onclick=()=>{if(done)return;if(w===q.a){finish(true,b)}else{b.classList.add('popno');beep('no');finish(false,b)}};
+   b.addEventListener('animationend',e=>{if(e.animationName==='rise'&&w===q.a&&!done)finish(false,null,true)});
+   sea.appendChild(b)});
+  function finish(right,b,escaped){if(done)return;done=true;
+   sea.querySelectorAll('.bub').forEach(x=>{x.style.animationPlayState='paused';if(x.textContent===q.a&&x!==b)x.style.boxShadow='0 0 0 6px #1FA35A'});
+   const fb=$('fb');
+   if(right){b.classList.add('popok');beep('pop');ok++;streak++;best=Math.max(best,streak);const tb=Math.round(Math.max(0,T+1.5-(performance.now()-t0)/1000)*6);const cb=streak>=3?50:0;const g=Math.round((100+tb+cb)*m);score+=g;
+    toast(streak>=3?'🔥 KOMBO x'+streak+'!':'Pop! ✨','var(--green)');fb.className='feedback show good';fb.innerHTML=`✅ <b>Betul! +${g}</b><br><span class="ar" style="font-size:1.5rem">${q.pre} ${q.a} ${q.post}</span>`}
+   else{streak=0;if(escaped)beep('no');fb.className='feedback show bad';fb.innerHTML=`${escaped?'💨 <b>Gelembung betul terlepas!</b>':'❌ <b>Gelembung salah.</b>'} Jawapan: <span class="ar" style="font-size:1.5rem">${q.pre} ${q.a} ${q.post}</span>`}
+   const more=i+1<Q.length;fb.innerHTML+=`<div class="center mt"><button class="btn gold" id="nx">${more?'Seterusnya ▶':'Lihat keputusan ✔'}</button></div>`;
+   $('nx').onclick=()=>{i++;more?draw():result(3,score,ok/Q.length,`Betul ${ok} / ${Q.length} · Kombo terbaik ${best}`)}}
+ }
+ draw();
+}
+/* Pulau 5: Boss */
+function lvBoss(){
+ quiz({lvl:4,tag:'🛡️ Raksasa Fitnah',boss:true,lives:DIFF[S.diff].lives,qs:shuf(BOSS).slice(0,10).map(q=>{const idx=shuf([0,1,2,3]);return{...q,opts:idx.map(j=>q.o[j]),ans:idx.indexOf(q.a)}}),
+  render:q=>`<div class="qbox"><div class="q">${q.q}</div></div><div class="opts">${q.opts.map((o,j)=>`<button class="opt" data-o="${j}"><span class="k">${keys[j]}</span><span>${o}</span></button>`).join('')}</div>`});
+}
+
+/* ================== KEPUTUSAN ================== */
+function result(lvl,score,acc,detail){
+ clearBubbles();
+ const stars=acc>=.9?3:acc>=.7?2:acc>=.5?1:0;const L=LEVELS[lvl];const prev=S.lv[lvl];const first=stars>0&&prev.stars===0;
+ if(stars>prev.stars||(stars===prev.stars&&score>prev.score))S.lv[lvl]={stars:Math.max(stars,prev.stars),score:Math.max(score,prev.score)};
+ save();go('sResult');
+ $('rTitle').textContent=stars?`🏝️ ${L.name} Ditawan!`:'🌊 Belum berjaya…';
+ $('rScore').textContent=score;$('rAcc').textContent=`Ketepatan ${Math.round(acc*100)}% · ${detail}`;
+ [...$('rStars').children].forEach((s,k)=>{s.classList.remove('on');if(k<stars)setTimeout(()=>{s.classList.add('on');beep('star')},350+k*350)});
+ $('rPiece').textContent=first?`🛡️ Kepingan perisai baharu: ayat ${L.pieces.join(', ')}!`:'';
+ $('rBadge').innerHTML=stars?`<div class="badge"><span class="e">${L.badge.e}</span>Lencana: ${L.badge.n}${first?' — BAHARU!':''}</div>`:'';
+ $('rMsg').textContent=stars===3?'MasyaAllah, cemerlang! Teruskan menghafaz 10 ayat terakhir Surah al-Kahfi.':stars===2?'Syabas! Sedikit lagi untuk 3 bintang.':stars===1?'Alhamdulillah, pulau ditawan! Cuba lagi untuk lebih bintang.':'Jangan putus asa! Buka “Ulang Kaji Ayat” di peta, kemudian cuba lagi. Perlu sekurang-kurangnya 50% betul.';
+ if(stars)setTimeout(()=>confetti(stars*60),300);
+ $('rRetry').onclick=()=>intro(lvl);
+ const all=S.lv.every(l=>l.stars>0);$('rNext').textContent=all?'🎖️ Lihat Sijil':'🗺️ Ke Peta';$('rNext').onclick=()=>all?showCert():go('sMap');updHud();
+}
+function rank(){const s=totalStars();return s>=14?'🏆 Pahlawan Firdaus':s>=11?'🥇 Pelayar Istiqamah':s>=8?'🥈 Penjaga Perisai':'🥉 Pelayar Berani'}
+function showCert(){go('sCert');$('cName').textContent=S.name;$('cRank').textContent=rank();$('cScore').textContent=totalScore();
+ $('cStars').innerHTML='<span class="on">★</span>'.repeat(totalStars())+'<span>'+'★'.repeat(15-totalStars())+'</span>';
+ $('cBadges').innerHTML=LEVELS.map((L,i)=>`<div class="badge ${S.lv[i].stars?'':'lock'}"><span class="e">${L.badge.e}</span>${L.badge.n}</div>`).join('');
+ try{const lb=JSON.parse(localStorage.getItem(KEY+'_lb')||'[]');const idx=lb.findIndex(r=>r.n===S.name&&r.d===S.diff);const rec={n:S.name,d:S.diff,s:totalStars(),p:totalScore()};
+  if(idx>=0){if(rec.p>lb[idx].p)lb[idx]=rec}else lb.push(rec);lb.sort((a,b)=>b.p-a.p);localStorage.setItem(KEY+'_lb',JSON.stringify(lb.slice(0,15)))}catch(e){}
+ confetti(220);beep('win')}
+function renderLb(){let lb=[];try{lb=JSON.parse(localStorage.getItem(KEY+'_lb')||'[]')}catch(e){}
+ $('lbBody').innerHTML=lb.length?lb.map((r,i)=>`<tr><td>${['🥇','🥈','🥉'][i]||i+1}</td><td><b>${r.n.replace(/</g,'&lt;')}</b></td><td>${DIFF[r.d].emo} ${DIFF[r.d].label}</td><td>${r.s}</td><td><b>${r.p}</b></td></tr>`).join(''):'<tr><td colspan="5">Belum ada juara. Lengkapkan Perisai Al-Kahfi untuk tersenarai!</td></tr>'}
+</script>
+</body>
+</html>
