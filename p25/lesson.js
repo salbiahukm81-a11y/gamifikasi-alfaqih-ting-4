@@ -1,0 +1,63 @@
+window.LESSON={
+id:'p25',no:25,bidang:'Akhlak Islamiah',title:'Wasatiyyah Menjamin Kecemerlangan Umat',game:'Ummatan Wasatan',
+theme:{a:'#22D3EE',b:'#FACC15',icon:'🎯'},
+hero:{ar:'وَكَذَٰلِكَ جَعَلْنَاكُمْ أُمَّةً وَسَطًا',ms:'“Dan demikianlah Kami jadikan kamu (wahai umat Muhammad) satu umat pertengahan (umat pilihan lagi adil)…” (al-Baqarah: 143)'},
+ranks:['Duta Wasatiyyah','Umat Cemerlang','Insan Seimbang','Pelatih Wasatiyyah'],
+cert:{title:'SIJIL DUTA WASATIYYAH',ar:'سَدِّدُوا وَقَارِبُوا… وَأَنَّ أَحَبَّ الْأَعْمَالِ أَدْوَمُهَا إِلَى اللَّهِ وَإِنْ قَلَّ',ms:'“Lakukanlah dengan bersederhana… amalan yang paling disukai Allah ialah yang berterusan walaupun sedikit.” (Riwayat al-Bukhari)'},
+stages:[
+{type:'pick',emo:'🎯',name:'Empat Prinsip',badge:'Pakar Prinsip',brief:'Wasatiyyah mempunyai empat prinsip. Kenal pasti prinsip bagi setiap contoh!',labels:['Kesederhanaan','Keseimbangan','Keadilan','Kecemerlangan'],data:[
+ {q:'Melakukan sesuatu dengan sempurna, tidak melampaui batas dan mematuhi syarat.',a:'Kesederhanaan'},
+ {q:'Dalil: apabila membelanjakan harta, mereka tidak melampaui batas dan tidak bakhil (al-Furqan: 67).',a:'Kesederhanaan'},
+ {q:'Menunaikan tugas dengan sempurna dan penuh bertanggungjawab.',a:'Kesederhanaan'},
+ {q:'Mematuhi arahan dan prosedur dalam menjalankan amanah.',a:'Kesederhanaan'},
+ {q:'Memenuhi keperluan rohani, jasmani dan akli secara sempurna dalam semua keadaan.',a:'Keseimbangan'},
+ {q:'Dalil: “Berilah kami kebaikan di dunia dan kebaikan di akhirat” (al-Baqarah: 201).',a:'Keseimbangan'},
+ {q:'Berehat setelah penat bekerja supaya badan kembali cergas.',a:'Keseimbangan'},
+ {q:'Menjauhi dadah dan arak yang boleh merosakkan akal.',a:'Keseimbangan'},
+ {q:'Meletakkan sesuatu sesuai dengan suasana, masa dan tempat.',a:'Keadilan'},
+ {q:'Dalil: janganlah kebencian kepada sesuatu kaum mendorong kamu tidak berlaku adil (al-Maidah: 8).',a:'Keadilan'},
+ {q:'Menunaikan hak kepada mereka yang berhak menerimanya.',a:'Keadilan'},
+ {q:'Tidak memenangkan mana-mana pihak dan berusaha mendamaikan pergaduhan.',a:'Keadilan'},
+ {q:'Pendekatan terbaik dalam melakukan kebaikan dan mencegah kemungkaran serta berkeyakinan teguh kepada Allah.',a:'Kecemerlangan'},
+ {q:'Dalil: kamu ialah umat paling baik yang dilahirkan bagi umat manusia (Ali Imran: 110).',a:'Kecemerlangan'},
+ {q:'Memakmurkan bumi, membangunkan negara dan membasmi kemiskinan.',a:'Kecemerlangan'},
+ {q:'Menggunakan kekayaan dunia untuk mendapatkan keredaan Allah.',a:'Kecemerlangan'}]},
+{type:'sort',emo:'⚖️',name:'Tiga Keperluan Seimbang',badge:'Penyeimbang',brief:'Keseimbangan meliputi keperluan ROHANI, JASMANI dan AKLI. Klasifikasikan!',bins:[{name:'Rohani',emo:'🕌',c:2},{name:'Jasmani',emo:'💪',c:0},{name:'Akli',emo:'🧠',c:1}],data:[
+ {t:'Melaksanakan ibadat fardu dan sunat dengan istiqamah',b:0},{t:'Menghayati al-Quran dan berzikir dengan bersungguh-sungguh',b:0},{t:'Melakukan ibadat dengan ikhlas',b:0},
+ {t:'Mengambil makanan yang baik dan seimbang',b:1},{t:'Berehat setelah penat bekerja',b:1},{t:'Memenuhi keperluan biologi dan fitrah manusia',b:1},
+ {t:'Menjauhi dadah dan arak',b:2},{t:'Menggunakan akal sebaik-baiknya untuk meningkatkan ilmu',b:2},{t:'Menggunakan akal untuk memajukan diri, masyarakat dan negara',b:2}]},
+{type:'match',emo:'🃏',name:'Kamus Wasatiyyah',badge:'Pakar Istilah',back:'🎯',brief:'Padankan istilah dan dalil dengan maksudnya.',data:[
+ ['Wasatiyyah','Pendekatan yang sederhana, seimbang, adil dan cemerlang dalam setiap tindakan'],['Ummatan wasatan','Umat yang terpilih dan adil, pertengahan dalam semua perkara'],['Al-Baqarah: 143','Kami jadikan kamu satu umat pertengahan'],['Al-Furqan: 67','Tidak melampaui batas dan tidak bakhil dalam berbelanja'],['Al-Maidah: 8','Tegakkan keadilan walaupun terhadap kaum yang dibenci'],['Ali Imran: 110','Umat paling baik yang menyuruh kebaikan dan mencegah kemungkaran'],['Hadis Aisyah','Amalan paling disukai Allah ialah yang berterusan walaupun sedikit']]},
+{type:'tf',emo:'⚖️',name:'Neraca Sederhana',badge:'Penimbang Adil',brief:'Benar atau salah? Uji kefahaman wasatiyyah anda!',data:[
+ {t:'Ummatan wasatan menggabungkan unsur jasad dan rohani tanpa mengabaikan mana-mana.',a:true,ex:'Wahbah al-Zuhaili, al-Tafsir al-Munir.'},
+ {t:'Umat Islam patut berlebih-lebihan dalam urusan spiritual semata-mata seperti golongan Nasrani.',a:false},
+ {t:'Umat Islam tidak mementingkan material semata-mata seperti golongan Yahudi dan musyrik.',a:true},
+ {t:'Rasulullah ﷺ menegur tiga lelaki yang berpuasa tanpa berbuka, solat malam tanpa tidur dan tidak mahu berkahwin.',a:true,ex:'Muttafaq ‘alaih.'},
+ {t:'Rasulullah ﷺ berpuasa dan berbuka, solat dan tidur, serta mengahwini wanita.',a:true},
+ {t:'Amalan yang banyak tetapi terputus lebih disukai Allah daripada amalan sedikit yang berterusan.',a:false,ex:'Yang berterusan walaupun sedikit lebih disukai.'},
+ {t:'Wasatiyyah menjadikan ekonomi masyarakat stabil kerana tiada pembaziran.',a:true},
+ {t:'Pembangunan yang menyeluruh dan seimbang dapat diwujudkan kerana adanya kestabilan politik.',a:true},
+ {t:'Keadilan bermaksud memberi sama rata kepada semua tanpa melihat keperluan.',a:false,ex:'Meletakkan sesuatu sesuai dengan suasana, masa dan tempat.'},
+ {t:'Belajar tanpa rehat sehingga jatuh sakit ialah amalan wasatiyyah.',a:false,ex:'Bertentangan dengan prinsip keseimbangan.'},
+ {t:'Syiar Islam dapat ditegakkan dengan menyempurnakan akhlak dan nilai.',a:true},
+ {t:'Masyarakat yang aman damai dan bersatu padu dapat dibangunkan dengan melaksanakan prinsip wasatiyyah.',a:true}]},
+{type:'boss',emo:'🎯',name:'Lawan Ekstrem',badge:'Duta Wasatiyyah',boss:{name:'RAKSASA EKSTREM',emo:'🌪️'},brief:'Raksasa Ekstrem menolak keseimbangan! Tumpaskan dengan wasatiyyah.',data:[
+ {q:'Apakah maksud wasatiyyah?',o:['Pendekatan yang sederhana, seimbang, adil dan cemerlang dalam setiap tindakan','Bersikap keras dalam semua perkara','Bersikap lalai','Berlebih-lebihan dalam ibadat'],a:0},
+ {q:'Dalil al-Quran bagi wasatiyyah ialah…',o:['Surah al-Baqarah, ayat 143','Surah al-Baqarah, ayat 188','Surah al-Kahfi, ayat 110','Surah Fussilat, ayat 33'],a:0},
+ {q:'Siapakah perawi hadis “Lakukanlah dengan bersederhana…”?',o:['Aisyah','Abu Hurairah','Anas bin Malik','Abu Musa al-Asy\'ari'],a:0},
+ {q:'Empat prinsip wasatiyyah ialah…',o:['Kesederhanaan, keseimbangan, keadilan, kecemerlangan','Solat, puasa, zakat, haji','Ilmu, amal, ikhlas, sabar','Jujur, amanah, adil, berani'],a:0},
+ {q:'Prinsip keseimbangan meliputi keperluan…',o:['Rohani, jasmani dan akli','Harta, pangkat dan nama','Makan, tidur dan main','Kerja, rehat dan hiburan'],a:0},
+ {q:'Dalil prinsip keadilan ialah…',o:['Surah al-Maidah, ayat 8','Surah al-Furqan, ayat 67','Surah al-Baqarah, ayat 201','Surah Ali Imran, ayat 110'],a:0},
+ {q:'Hikmah wasatiyyah dari aspek pendidikan ialah…',o:['Tahap pendidikan masyarakat dapat ditingkatkan mengikut keperluan negara','Pelajar boleh ponteng','Sekolah ditutup','Ilmu tidak penting'],a:0},
+ {q:'Situasi: Razak menghabiskan seluruh wang biasiswa untuk membeli gajet mahal. Ini bertentangan dengan prinsip…',o:['Kesederhanaan','Kecemerlangan','Keadilan','Keseimbangan rohani'],a:0},
+ {q:'Situasi: Dua rakan bergaduh. Anda tidak memihak dan berusaha mendamaikan mereka. Ini prinsip…',o:['Keadilan','Kesederhanaan','Keseimbangan','Kecemerlangan'],a:0},
+ {q:'Situasi: Mira belajar, beribadat, bersukan dan berehat secukupnya. Ini menepati prinsip…',o:['Keseimbangan','Keadilan','Kecemerlangan','Kesederhanaan sahaja'],a:0},
+ {q:'Langkah mengatasi pembaziran yang kerap berlaku dalam masyarakat ialah…',o:['Berbelanja secara sederhana, tidak melampaui batas dan tidak bakhil','Berbelanja sesuka hati','Menyimpan semua harta tanpa membelanjakan','Meminjam untuk berbelanja'],a:0},
+ {q:'Menurut Wahbah al-Zuhaili, ummatan wasatan ialah umat yang…',o:['Pertengahan dalam semua perkara, tidak melampaui batas dan tidak lalai','Paling kaya','Paling ramai','Paling kuat berperang'],a:0}]}
+],
+review:[
+ {h:'Maksud & Dalil',items:['Wasatiyyah: pendekatan yang sederhana, seimbang, adil dan cemerlang dalam setiap tindakan.','Dalil: al-Baqarah: 143; hadis Aisyah – amalan paling disukai Allah ialah yang berterusan walaupun sedikit (Riwayat al-Bukhari).','Ummatan wasatan (Wahbah al-Zuhaili): menggabungkan jasad dan rohani; terpilih dan adil; pertengahan, tidak melampaui batas dan tidak lalai; tidak berlebihan dalam spiritual semata-mata; tidak mementingkan material semata-mata.']},
+ {h:'Empat Prinsip',items:['<b>Kesederhanaan</b> (al-Furqan: 67): sempurna, tidak melampaui batas, mematuhi syarat.','<b>Keseimbangan</b> (al-Baqarah: 201): rohani, jasmani dan akli.','<b>Keadilan</b> (al-Maidah: 8): meletakkan sesuatu sesuai dengan suasana, masa dan tempat.','<b>Kecemerlangan</b> (Ali Imran: 110): pendekatan terbaik dalam kebaikan, mencegah kemungkaran, yakin kepada Allah.']},
+ {h:'Hikmah',items:['Masyarakat aman damai dan bersatu padu.','Tahap pendidikan meningkat mengikut keperluan negara.','Ekonomi stabil kerana tiada pembaziran.','Pembangunan menyeluruh dan seimbang kerana kestabilan politik.','Syiar Islam ditegakkan dengan menyempurnakan akhlak dan nilai.']},
+ {h:'Spektrum Ilmu',items:['Tiga lelaki ditegur Rasulullah ﷺ kerana melampaui batas. Baginda bersabda: “Aku berpuasa dan berbuka, solat dan tidur, dan mengahwini wanita; sesiapa yang membenci sunahku, maka dia bukan daripada golonganku.” (Muttafaq ‘alaih)']}]
+};

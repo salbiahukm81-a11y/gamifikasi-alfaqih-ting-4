@@ -1,11 +1,10 @@
-# Kembara Pelita Hamba
+# Gamifikasi Alfaqih – Pendidikan Islam Tingkatan 4
 
-Game interaktif Pendidikan Islam Tingkatan 4 – Pelajaran 1: Surah al-An'am, ayat 162–163.
+25 game interaktif (125 misi) berdasarkan buku teks Pendidikan Islam Tingkatan 4 KSSM.
 
-- 5 pelita (tahap): Susun Ayat, Padan Makna, Neraca Benar/Salah, Lengkapkan Ayat, Menara Ikhlas
-- 3 level kesukaran: Level 1, Level 2, Level 3
-- Markah, bintang, lencana, sijil dan papan juara
-
-Main: buka `p1/index.html` atau laman GitHub Pages repositori ini.
+- Halaman utama: `index.html` (senarai semua pelajaran mengikut bidang)
+- Setiap pelajaran: `pN/` (P1–P25), kandungan dalam `pN/lesson.js`
+- Enjin game dikongsi: `assets/engine.js`, `assets/engine.css`
+- Level 1, Level 2, Level 3 · markah, combo, bintang, lencana, pertarungan bos, sijil dan papan juara
 
 @powered by alfaqih

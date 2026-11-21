@@ -1,0 +1,63 @@
+window.LESSON={
+id:'p7',no:7,bidang:'Al-Quran',title:'Dakwah Pemacu Kemajuan (Surah Fussilat, ayat 33)',game:'Misi Pendakwah',
+theme:{a:'#FBBF24',b:'#10B981',icon:'📣'},
+hero:{ar:'وَمَنْ أَحْسَنُ قَوْلًا مِّمَّن دَعَا إِلَى اللَّهِ وَعَمِلَ صَالِحًا وَقَالَ إِنَّنِي مِنَ الْمُسْلِمِينَ',ms:'“Dan siapakah yang lebih baik perkataannya daripada orang yang menyeru manusia kepada Allah dan beramal soleh…” (Fussilat: 33)'},
+ranks:['Daie Legenda','Daie Cemerlang','Daie Muda','Daie Pelatih'],
+cert:{title:'SIJIL DAIE MUDA',ar:'مَنْ دَعَا إِلَى هُدًى كَانَ لَهُ مِنَ الْأَجْرِ مِثْلُ أُجُورِ مَنْ تَبِعَهُ',ms:'“Sesiapa yang menyeru kepada petunjuk (kebaikan), baginya pahala seperti pahala orang yang mengikutnya…” (Riwayat Muslim)'},
+stages:[
+{type:'order',emo:'🧩',name:'Susun Ayat 33',badge:'Penyusun Ayat',brief:'Susun potongan ayat 33 Surah Fussilat dan maksudnya mengikut tertib.',data:[
+ {title:'Susun potongan ayat 33 (kanan ke kiri)',items:['وَمَنْ أَحْسَنُ قَوْلًا','مِّمَّن دَعَا إِلَى اللَّهِ','وَعَمِلَ صَالِحًا','وَقَالَ إِنَّنِي مِنَ الْمُسْلِمِينَ'],decoy:['وَأَقَامَ الصَّلَاةَ'],note:'Surah Fussilat, ayat 33.'},
+ {title:'Susun maksud ayat 33 mengikut tertib',items:['Dan siapakah yang lebih baik perkataannya','daripada orang yang menyeru manusia kepada Allah','dan beramal soleh','dan berkata: Sesungguhnya aku daripada kalangan orang Islam.']}]},
+{type:'match',emo:'🃏',name:'Padan Konsep',badge:'Pakar Konsep',back:'📣',brief:'Padankan potongan ayat dan istilah dengan maksudnya.',data:[
+ ['وَمَنْ أَحْسَنُ قَوْلًا','Dan siapakah yang lebih baik perkataannya'],
+ ['مِّمَّن دَعَا إِلَى اللَّهِ','daripada orang yang menyeru manusia kepada Allah'],
+ ['وَعَمِلَ صَالِحًا','dan beramal soleh'],
+ ['وَقَالَ إِنَّنِي مِنَ الْمُسْلِمِينَ','dan berkata: Sesungguhnya aku daripada kalangan orang Islam'],
+ ['Dakwah','Menyeru supaya melakukan perkara yang diperintah Allah dan meninggalkan larangan-Nya'],
+ ['Amal soleh','Perbuatan baik mengikut panduan al-Quran dan al-Sunnah dengan niat mendekatkan diri kepada Allah'],
+ ['Islam sebagai cara hidup','Melaksanakan ajaran Islam dalam semua bidang kehidupan']]},
+{type:'sort',emo:'🗂️',name:'Tiga Tuntutan',badge:'Pelaksana Tuntutan',brief:'Ayat 33 mengandungi tiga tuntutan. Hantar setiap kad ke tuntutan yang betul!',bins:[{name:'Berdakwah',emo:'📣',c:0},{name:'Beramal Soleh',emo:'🤲',c:2},{name:'Islam Cara Hidup',emo:'🌐',c:1}],data:[
+ {t:'Mengajak dan menyeru manusia supaya takut kepada Allah dengan pendekatan terbaik',b:0},
+ {t:'Serulah ke jalan Tuhanmu dengan hikmah dan nasihat pengajaran yang baik (al-Nahl: 125)',b:0},
+ {t:'Tugasan yang mulia di sisi Allah',b:0},
+ {t:'Perbuatan baik mengikut panduan al-Quran dan al-Sunnah dengan niat mendekatkan diri kepada Allah',b:1},
+ {t:'Contoh: ibadah khusus seperti solat dan ibadah umum seperti berakhlak mulia',b:1},
+ {t:'Patutkah kamu menyuruh manusia melakukan kebaikan sedang kamu lupa akan diri kamu sendiri? (al-Baqarah: 44)',b:1},
+ {t:'Berakhlak mulia kepada ibu bapa',b:1},
+ {t:'Melaksanakan ajaran Islam dalam semua bidang kehidupan',b:2},
+ {t:'Pada hari ini Aku telah sempurnakan bagi kamu agama kamu… (al-Maidah: 3)',b:2},
+ {t:'Kita dimuliakan Allah dengan Islam; jika mencari kemuliaan selainnya, kita akan dihina (Saidina Umar)',b:2}]},
+{type:'tf',emo:'⚖️',name:'Uji Daie',badge:'Daie Bijak',brief:'Benar atau salah? Buktikan anda daie yang berilmu!',data:[
+ {t:'Abdullah bin Mas\'ud, Salim maula Abi Huzaifah, Ubai bin Ka\'ab dan Mu\'az bin Jabal ialah pakar rujuk tilawah al-Quran dalam kalangan sahabat.',a:true,ex:'Spektrum Ilmu.'},
+ {t:'Sesiapa yang menyeru kepada kebaikan mendapat pahala seperti pahala orang yang mengikutnya tanpa mengurangkan pahala mereka.',a:true,ex:'Riwayat Muslim daripada Abu Hurairah.'},
+ {t:'Orang yang menyeru kepada kesesatan tidak menanggung apa-apa dosa pengikutnya.',a:false,ex:'Baginya dosa seperti dosa orang yang mengikutnya.'},
+ {t:'Menurut Imam Ibnu Kathir, dakwah bermanfaat untuk diri pendakwah dan untuk orang lain.',a:true},
+ {t:'Dakwah hendaklah dilakukan dengan kekerasan dan paksaan.',a:false,ex:'Al-Nahl 125: dengan hikmah dan nasihat pengajaran yang baik.'},
+ {t:'Amal soleh hanya meliputi ibadah khusus seperti solat sahaja.',a:false,ex:'Termasuk ibadah umum seperti berakhlak mulia.'},
+ {t:'Berdakwah ialah sunah rasul.',a:true,ex:'Pengajaran ayat.'},
+ {t:'Kita perlu beramal soleh supaya menjadi contoh kepada orang lain.',a:true},
+ {t:'Islam hanya perlu diamalkan di masjid, bukan dalam semua bidang kehidupan.',a:false,ex:'Islam ialah cara hidup yang sempurna.'},
+ {t:'Kata-kata Saidina Umar tentang kemuliaan Islam dicatat dalam kitab al-Mustadrak al-Hakim.',a:true},
+ {t:'Surah Fatir ayat 10 menyatakan kepada Allah naik segala perkataan yang baik dan amal soleh.',a:true},
+ {t:'Menyuruh orang lain berbuat baik sedangkan diri sendiri melupakannya adalah sikap terpuji.',a:false,ex:'Ditegur dalam al-Baqarah: 44.'}]},
+{type:'boss',emo:'📣',name:'Cabaran Dakwah',badge:'Daie Muda',boss:{name:'RAKSASA JAHIL',emo:'🙈'},brief:'Tumpaskan Raksasa Jahil dengan ilmu dan hikmah!',data:[
+ {q:'Ayat dakwah dalam pelajaran ini ialah…',o:['Surah Fussilat, ayat 33','Surah al-Nahl, ayat 125','Surah al-Maidah, ayat 3','Surah al-Baqarah, ayat 44'],a:0},
+ {q:'Apakah tiga tuntutan dalam ayat 33 Surah Fussilat?',o:['Berdakwah, beramal soleh, menjadikan Islam sebagai cara hidup','Solat, puasa, zakat','Membaca, menulis, mengira','Belajar, bekerja, berehat'],a:0},
+ {q:'Apakah maksud dakwah?',o:['Menyeru supaya melakukan perkara yang diperintah Allah dan meninggalkan larangan-Nya','Berceramah di televisyen sahaja','Memaksa orang memeluk Islam','Mengutuk orang lain'],a:0},
+ {q:'Menurut Surah al-Nahl ayat 125, dakwah hendaklah dilakukan dengan…',o:['Hikmah dan nasihat pengajaran yang baik','Ugutan','Kekerasan','Sindiran'],a:0},
+ {q:'Siapakah perawi hadis “Sesiapa yang menyeru kepada petunjuk…”?',o:['Abu Hurairah','Ibnu Umar','Ali bin Abu Talib','Aisyah'],a:0},
+ {q:'Antara berikut, siapakah pakar rujuk tilawah al-Quran dalam kalangan sahabat?',o:['Ubai bin Ka\'ab','Abu Jahal','Abu Lahab','Abdullah bin Ubai'],a:0},
+ {q:'Contoh ibadah umum dalam amal soleh ialah…',o:['Berakhlak mulia','Solat fardu','Puasa Ramadan','Haji'],a:0},
+ {q:'Ayat yang menegur orang yang menyuruh kebaikan tetapi melupakan diri sendiri ialah…',o:['Surah al-Baqarah, ayat 44','Surah Fatir, ayat 10','Surah al-Maidah, ayat 3','Surah Fussilat, ayat 33'],a:0},
+ {q:'Surah al-Maidah ayat 3 berkaitan dengan tuntutan…',o:['Menjadikan Islam sebagai cara hidup','Beramal soleh','Berdakwah','Menuntut ilmu'],a:0},
+ {q:'Situasi: Farah mengajak rakannya solat Zohor berjemaah dengan cara yang lembut. Farah melaksanakan tuntutan…',o:['Berdakwah dengan pendekatan terbaik','Menjadikan Islam sebagai hiburan','Mempersendakan agama','Menghukum rakan'],a:0},
+ {q:'Situasi: Seorang ketua pengawas menyuruh murid menepati masa tetapi dia sendiri selalu lewat. Sikapnya bertentangan dengan…',o:['Surah al-Baqarah, ayat 44','Surah al-Nahl, ayat 125','Hadis Abu Hurairah','Surah Fatir, ayat 10'],a:0},
+ {q:'Mengapakah dakwah disebut “pemacu kemajuan”?',o:['Dakwah membimbing manusia melaksanakan perintah Allah dalam semua bidang kehidupan','Dakwah menambah kekayaan peribadi','Dakwah hanya untuk ustaz','Dakwah menggantikan pelajaran sains'],a:0}]}
+],
+review:[
+ {h:'Surah Fussilat, ayat 33',ar:'وَمَنْ أَحْسَنُ قَوْلًا مِّمَّن دَعَا إِلَى اللَّهِ وَعَمِلَ صَالِحًا وَقَالَ إِنَّنِي مِنَ الْمُسْلِمِينَ',ms:'Dan siapakah yang lebih baik perkataannya daripada orang yang menyeru manusia kepada Allah dan beramal soleh dan berkata: “Sesungguhnya aku daripada kalangan orang Islam.”'},
+ {h:'Maksud Dakwah',items:['Menyeru supaya melakukan perkara yang diperintah oleh Allah dan meninggalkan larangan-Nya.','Hadis (Riwayat Muslim): sesiapa yang menyeru kepada petunjuk mendapat pahala seperti pahala pengikutnya; sesiapa menyeru kepada kesesatan menanggung dosa seperti dosa pengikutnya.']},
+ {h:'Tuntutan Ayat',items:['<b>Berdakwah</b>: mengajak dan menyeru manusia supaya takut kepada Allah dengan pendekatan terbaik (al-Nahl: 125). Berdakwah merupakan tugasan yang mulia di sisi Allah.','<b>Beramal soleh</b>: perbuatan baik mengikut panduan al-Quran dan al-Sunnah dengan niat mendekatkan diri kepada Allah – ibadah khusus (solat) dan ibadah umum (akhlak mulia) (al-Baqarah: 44; Fatir: 10).','<b>Menjadikan Islam sebagai cara hidup</b>: melaksanakan ajaran Islam dalam semua bidang kehidupan (al-Maidah: 3).']},
+ {h:'Spektrum Ilmu',items:['Pakar rujuk tilawah (muqri\' al-Quran) dalam kalangan sahabat: Abdullah bin Mas\'ud, Salim maula Abi Huzaifah, Ubai bin Ka\'ab, Mu\'az bin Jabal.','Imam Ibnu Kathir: pendakwah terlebih dahulu mendapat petunjuk daripada seruan dakwahnya, maka dakwah bermanfaat untuk dirinya dan orang lain.','Saidina Umar: Kita golongan yang dimuliakan Allah dengan Islam; jika mencari kemuliaan selain daripadanya, kita akan dihina oleh Allah (al-Mustadrak al-Hakim).']},
+ {h:'Pengajaran Ayat',items:['Berdakwah kerana dakwah ialah sunah rasul.','Menjadikan Islam sebagai cara hidup yang sempurna.','Beramal soleh supaya menjadi contoh kepada orang lain.']}]
+};
