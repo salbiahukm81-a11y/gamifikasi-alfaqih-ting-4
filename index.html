@@ -6,7 +6,7 @@
 <title>Gamifikasi Alfaqih – Pendidikan Islam Tingkatan 4</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/engine.css">
+<link rel="stylesheet" href="assets/engine.css?v=1795306073">
 <style>
 .hero{text-align:center;padding:40px 20px 26px}
 .hero .gtitle{font-size:clamp(2.6rem,8vw,5rem)}
@@ -56,6 +56,6 @@ function render(){TS=0;TD=0;
  L.forEach(l=>{const p=prog(l.id);TS+=p.s;TD+=p.d?1:0});document.querySelectorAll('.gc .cp').forEach(b=>b.onclick=e=>{e.preventDefault();e.stopPropagation();const u=new URL(b.dataset.id+'/',location.href).href;window.alfaqihShare?alfaqihShare(u,b.dataset.t):null});document.getElementById('ts').textContent=TS;document.getElementById('td').textContent=TD}
 render();
 </script>
-<script src="assets/share.js"></script>
+<script src="assets/share.js?v=1795306073"></script>
 </body>
 </html>
