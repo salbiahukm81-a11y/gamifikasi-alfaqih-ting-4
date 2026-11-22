@@ -64,3 +64,6 @@ review:[
  {h:'Qazaf',items:['Menuduh wanita Islam yang baik berzina tanpa membawa saksi (al-Nur: 23). Hukuman: 80 sebatan.','Kesan: menjatuhkan maruah, mencetuskan perbalahan.']},
  {h:'Pengajaran Hadis',items:['Memelihara diri daripada syirik kerana syirik merosakkan akidah.','Menghindarkan diri daripada membunuh kerana melanggar hak asasi manusia.','Bersikap amanah dalam mengurus harta anak yatim.','Mempertahankan keamanan negara supaya Islam dapat ditegakkan.','Menghindarkan diri daripada menuduh orang berzina tanpa bukti supaya maruah umat Islam terpelihara.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

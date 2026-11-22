@@ -54,3 +54,6 @@ review:[
  {h:'Contoh Rasulullah ﷺ',items:['Menyampaikan wahyu dengan benar tanpa menokok tambah (al-Najm: 3–4).','Bergurau dengan cerita yang benar – kisah wanita tua (Riwayat al-Tirmizi; al-Waqi\'ah: 36–37).']},
  {h:'Hikmah',items:['Saling bekerjasama kerana wujud perasaan saling mempercayai.','Menenangkan hati kerana tidak melakukan dosa.','Terpelihara daripada sifat munafik yang dibenci Allah. Tanda munafik: berdusta, mungkir janji, khianat (Riwayat al-Bukhari).','Menjadi contoh teladan kerana maruahnya dipandang tinggi.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

@@ -53,3 +53,6 @@ review:[
  {h:'Kesan Perbuatan Rasuah',items:['Allah dan Rasul-Nya melaknat pemberi dan penerima rasuah.','Menjadikan individu hilang harga diri kerana perbuatan itu berdosa.','Melumpuhkan ekonomi negara akibat kos pengurusan yang meningkat.','Meningkatkan kes jenayah dalam masyarakat kerana sifat mementingkan diri sendiri.']},
  {h:'Pengajaran Ayat',items:['Mengelakkan diri daripada melakukan sumpah palsu untuk mendapatkan kepentingan tertentu.','Mencari rezeki yang halal agar tidak menyalahi syariat Islam.','Menjauhkan diri daripada memberi rasuah supaya tidak menzalimi diri dan masyarakat.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

@@ -60,3 +60,6 @@ review:[
  {h:'Kesan',items:['Agama: melemahkan iman, merosakkan akidah, menjatuhkan imej umat Islam.','Ekonomi: individu pasif dan malas; membelanjakan wang pada perkara tidak berfaedah.','Kemasyarakatan: agresif dan kasar; memutuskan silaturahim.','Politik: menggugat kestabilan akibat keganasan; politik tidak harmoni akibat taksub pemimpin kumpulan.']},
  {h:'Cara Menjauhi',items:['Sahabat, Taubat, Amal, Kaji, Doa, Ilmu (manhaj Ahli Sunnah Wal Jamaah).']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

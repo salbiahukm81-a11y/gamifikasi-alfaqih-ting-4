@@ -67,3 +67,6 @@ review:[
  {h:'Unit 2: al-Jabbar (Maha Perkasa)',items:['Maksud: Allah Maha Berkuasa secara mutlak untuk melakukan segala kehendak-Nya.','Dalil naqli: Surah al-Hasyr, ayat 23.','Penghayatan 1: Allah memiliki dan menguasai seluruh alam; semua makhluk berada dalam pemerintahan Allah. Hadis qudsi: “Akulah al-Jabbar! Di manakah orang-orang yang berkuasa? Di manakah orang-orang yang sombong?” (Riwayat Ibnu Majah).','Penghayatan 2: perbuatan Allah tidak boleh dipersoalkan; setiap perbuatan-Nya mengandungi hikmah tersembunyi (al-Anbiya\': 23).','Penghayatan 3: manusia wajib merendah diri kerana Allah akan mencampakkan makhluk yang takabur dan bongkak ke dalam neraka Jahannam.']},
  {h:'Spektrum Ilmu & Amalan',items:['Syurga dan neraka berdialog: syurga dimasuki orang lemah dan miskin; neraka dimasuki orang bengis dan sombong (Riwayat al-Tirmizi).','Tasbih rukuk: سُبْحَانَ ذِي الْجَبَرُوتِ وَالْمَلَكُوتِ وَالْكِبْرِيَاءِ وَالْعَظَمَةِ']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

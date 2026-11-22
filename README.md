@@ -1,7 +1,7 @@
 # Gamifikasi Alfaqih – Pendidikan Islam Tingkatan 4 & 5
 
 ## Tingkatan 4
-25 game interaktif (125 misi) berdasarkan buku teks Pendidikan Islam Tingkatan 4 KSSM.
+25 game interaktif (150 misi, termasuk Team Battle) berdasarkan buku teks Pendidikan Islam Tingkatan 4 KSSM.
 
 - Halaman utama: `index.html` (senarai semua pelajaran mengikut bidang)
 - Setiap pelajaran: `pN/` (P1–P25), kandungan dalam `pN/lesson.js`

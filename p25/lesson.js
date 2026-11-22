@@ -61,3 +61,6 @@ review:[
  {h:'Hikmah',items:['Masyarakat aman damai dan bersatu padu.','Tahap pendidikan meningkat mengikut keperluan negara.','Ekonomi stabil kerana tiada pembaziran.','Pembangunan menyeluruh dan seimbang kerana kestabilan politik.','Syiar Islam ditegakkan dengan menyempurnakan akhlak dan nilai.']},
  {h:'Spektrum Ilmu',items:['Tiga lelaki ditegur Rasulullah ﷺ kerana melampaui batas. Baginda bersabda: “Aku berpuasa dan berbuka, solat dan tidur, dan mengahwini wanita; sesiapa yang membenci sunahku, maka dia bukan daripada golonganku.” (Muttafaq ‘alaih)']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

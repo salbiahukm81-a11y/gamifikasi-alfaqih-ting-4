@@ -65,3 +65,6 @@ review:[
  {h:'Syarat Terbatal Iman',items:['Melakukan perkara yang jelas membawa diri kepada kufur.','Mengetahui perkara yang dilakukan membawa diri kepada kufur.','Mengingkari perkara asas dalam Islam (rukun iman dan rukun Islam).','Melakukan dengan sengaja dan pilihan sendiri tanpa paksaan (orang yang dipaksa dikecualikan – al-Nahl: 106).']},
  {h:'Cara Menjauhi',items:['Ilmu, Sahabat, Amal, Kaji, Istighfar, Doa.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

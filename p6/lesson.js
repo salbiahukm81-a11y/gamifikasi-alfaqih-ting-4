@@ -57,3 +57,6 @@ review:[
  {h:'Pengajaran Ayat',items:['Menjauhkan diri daripada golongan yang mempersendakan agama demi menjaga kesucian Islam.','Menyedari perbuatan menjadikan agama sebagai alat permainan dan gurauan ialah sebahagian daripada tipu daya dunia.','Menyedari perbuatan mempersendakan agama akan diazab oleh Allah dengan seksaan api neraka.','Sentiasa memberikan peringatan kepada orang yang mempersendakan agama berpandukan al-Quran dan al-Sunnah.','Mempertahankan kesucian Islam dengan pendekatan yang terbaik.','Meyakini bahawa Allah tidak akan memberikan perlindungan dan syafaat kepada orang yang mempersendakan agama.']},
  {h:'Spektrum Ilmu & Amalan',items:['Imam al-Qurtubi: jika melihat kemungkaran, berilah nasihat dan peringatan; jika ditolak, tinggalkanlah mereka.','Saidina Umar: “Kembali kepada kebenaran itu lebih baik daripada berterusan mempertahankan kebatilan.”','Doa (Riwayat Muslim): اللَّهُمَّ إِنِّي أَسْأَلُكَ الْهُدَى وَالتُّقَى وَالْعَفَافَ وَالْغِنَى']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

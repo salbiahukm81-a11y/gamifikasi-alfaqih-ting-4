@@ -61,3 +61,6 @@ review:[
  {h:'Faktor Kemerosotan',items:['Politik: campur tangan pegawai Parsi dan Turki; perebutan kuasa; kerajaan kecil (Saljuk, Buwaih).','Sosial: kebajikan terabai; pemberontakan Syiah dan Khawarij.','Ekonomi: pedagang tidak datang; Baitulmal merosot; pertanian merosot.','Ketenteraan: pertahanan lemah; serangan Georgia, Armenia dan Monggol (Hulagu Khan).']},
  {h:'Iktibar',items:['Memilih pemimpin berwibawa; memanfaatkan sumber dengan bijak; mengeratkan perpaduan kaum; memperbanyak penerokaan ilmu; cintakan negara; mencontohi ciri kepimpinan Islam.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

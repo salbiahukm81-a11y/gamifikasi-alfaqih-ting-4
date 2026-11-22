@@ -51,3 +51,6 @@ review:[
  {h:'Spektrum Ilmu',items:['Sunat membaca doa iftitah dalam solat. Ali bin Abu Talib meriwayatkan Rasulullah ﷺ membacanya apabila mendirikan solat (Riwayat Muslim).','Ibnu Umar meriwayatkan: pintu-pintu langit dibuka kerana kalimah “Allahu akbar kabira, walhamdulillahi kathira, wa subhanallahi bukratan wa asila” (Riwayat Muslim).']},
  {h:'Amalan',ar:'اللَّهُمَّ أَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ',ms:'Ya Allah, bantulah aku untuk mengingati-Mu, mensyukuri-Mu dan beribadat kepada-Mu dengan baik. (Riwayat Abu Daud)'}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

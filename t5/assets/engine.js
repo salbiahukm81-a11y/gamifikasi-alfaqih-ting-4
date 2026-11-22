@@ -194,7 +194,7 @@ document.addEventListener('keydown',e=>{if(!$('mFc').classList.contains('on'))re
 $('revBtn').onclick=fcOpen;$('fcSplash').onclick=fcOpen;$('fcTop').onclick=fcOpen;
 
 /* ---------- peta ---------- */
-const unlocked=i=>i===0||S.st[i-1].stars>0;
+const unlocked=i=>i===0||S.st[i-1].stars>0||L.stages[i].type==='team';
 function renderMap(){
  $('missions').innerHTML=L.stages.map((g,i)=>{const st=S.st[i].stars,u=unlocked(i);return `<button class="mis ${st?'done':u?'open':'lock'}" data-i="${i}">
   ${u?'':'<span class="lockico">🔒</span>'}<div class="no">MISI ${i+1}</div><div class="ic">${g.emo}</div><div class="nm">${esc(g.name)}</div><div class="ty">${TYPE_ICON[g.type]} ${TYPE_LABEL[g.type]}</div>
@@ -640,5 +640,5 @@ function showCert(){go('sCert');$('cN').textContent=S.name;$('cR').textContent=r
 function renderLb(){let lb=[];try{lb=JSON.parse(localStorage.getItem(KEY+'_lb')||'[]')}catch(e){}
  $('lbBody').innerHTML=lb.length?lb.map((r,i)=>`<tr><td>${['🥇','🥈','🥉'][i]||i+1}</td><td><b>${esc(r.n)}</b></td><td>Level ${r.l}</td><td>${r.s}</td><td><b>${r.p}</b></td></tr>`).join(''):'<tr><td colspan="5">Belum ada juara. Tamatkan semua misi untuk tersenarai!</td></tr>'}
 window.__G={go,S:()=>S,setS:v=>{S=v},showCert,renderMap,RUN,result};
-const me=document.currentScript&&document.currentScript.src;const shs=document.createElement('script');shs.src=me?me.replace(/engine\.js.*$/,'share.js?v=1795310185'):'../assets/share.js';document.body.appendChild(shs);
+const me=document.currentScript&&document.currentScript.src;const shs=document.createElement('script');shs.src=me?me.replace(/engine\.js.*$/,'share.js?v=1795311519'):'../assets/share.js';document.body.appendChild(shs);
 })();

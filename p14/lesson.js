@@ -54,3 +54,6 @@ review:[
  {h:'Perkara Makruh',items:['Tidak membaca basmalah; tidak menghadap kiblat; menyembelih pada waktu malam; menyembelih di hadapan binatang lain; menyeksa binatang; pisau tumpul.']},
  {h:'Hikmah',items:['Membezakan daging halal dengan haram supaya ibadah diterima.','Menghindarkan penyakit kerana toksin dan bakteria dalam darah dikeluarkan.','Mempercepat proses kematian binatang.','Fatwa 1988: water stunner (ayam) dan electrical stunning (lembu) adalah harus.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

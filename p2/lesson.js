@@ -71,3 +71,6 @@ review:[
  {h:'Inti Sari Unit 2',items:['Allah menganugerahkan syurga Firdaus kepada orang yang beriman dan beramal soleh.','Orang yang beramal soleh akan kekal di dalam syurga Firdaus.','Kehebatan dan keluasan ilmu Allah tiada tandingan.','Para rasul dilantik dalam kalangan manusia yang diberikan wahyu untuk disampaikan kepada umat.','Orang yang rindu bertemu Tuhan akan sentiasa beramal soleh serta menjauhi perbuatan syirik.']},
  {h:'Spektrum Ilmu',items:['Abu Darda\': Sesiapa yang menghafaz sepuluh ayat terakhir Surah al-Kahfi, akan terhindar daripada fitnah Dajjal (Riwayat Muslim).','Surah Luqman ayat 27: Jika pohon di bumi dijadikan pena dan lautan ditambah tujuh lautan lagi, kalimah Allah tidak akan habis.','Keindahan alam semula jadi merupakan tanda-tanda kekuasaan Allah.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

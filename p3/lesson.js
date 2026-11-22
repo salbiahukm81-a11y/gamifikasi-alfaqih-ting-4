@@ -67,3 +67,6 @@ review:[
  {h:'Mad Lazim (6 harakat)',items:['<b>Kalimi</b>: huruf mad bertemu huruf bertanda sukun dalam satu kalimah.','Kalimi <b>mukhaffaf</b>: huruf sukun tidak bersyaddah, tidak dibaca idgham (contoh: آلْآنَ).','Kalimi <b>muthaqqal</b>: huruf bersyaddah, dibaca idgham (contoh: الضَّالِّينَ).','<b>Harfi</b>: pada fawatih al-suwar – <b>mukhaffaf</b> (tidak idgham, contoh صٓ) dan <b>muthaqqal</b> (dibaca idgham, contoh lam pada الٓمٓ).']},
  {h:'Qalqalah (ق ط ب ج د)',items:['<b>Sughra</b>: huruf qalqalah bersukun di pertengahan atau hujung kalimah ketika wasal – lantunan rendah.','<b>Kubra</b>: huruf qalqalah bersukun/disukunkan di hujung kalimah ketika waqaf – lantunan kuat.','<b>Akbar</b>: huruf qalqalah bersyaddah di hujung kalimah ketika waqaf – lantunan lebih kuat (sumber: Hidayah al-Qari).']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

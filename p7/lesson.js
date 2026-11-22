@@ -61,3 +61,6 @@ review:[
  {h:'Spektrum Ilmu',items:['Pakar rujuk tilawah (muqri\' al-Quran) dalam kalangan sahabat: Abdullah bin Mas\'ud, Salim maula Abi Huzaifah, Ubai bin Ka\'ab, Mu\'az bin Jabal.','Imam Ibnu Kathir: pendakwah terlebih dahulu mendapat petunjuk daripada seruan dakwahnya, maka dakwah bermanfaat untuk dirinya dan orang lain.','Saidina Umar: Kita golongan yang dimuliakan Allah dengan Islam; jika mencari kemuliaan selain daripadanya, kita akan dihina oleh Allah (al-Mustadrak al-Hakim).']},
  {h:'Pengajaran Ayat',items:['Berdakwah kerana dakwah ialah sunah rasul.','Menjadikan Islam sebagai cara hidup yang sempurna.','Beramal soleh supaya menjadi contoh kepada orang lain.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

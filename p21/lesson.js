@@ -63,3 +63,6 @@ review:[
  {h:'Imam Ahmad bin Hanbal',items:['Ahmad bin Muhammad bin Hanbal; lahir 164H di Baghdad; wafat 241H; kunyah Abu Abdullah.','Peribadi: sentiasa menuntut ilmu; pemaaf; membaca al-Quran sejak 9 tahun; kuat beribadah; sanggup dipenjara mempertahankan akidah.','Guru: Imam al-Syafie, Abu Yusuf al-Qadhi, Hammad bin Khalid. Murid: al-Walid bin Muslim, Hanbal bin Ishaq, Hasan bin Musa.','Karya: al-Musnad, al-Tarikh, al-Ilal. Asas: fatwa sahabat, qiyas, istishab. Tersebar: Baghdad, Mesir, Najd.']},
  {h:'Iktibar',items:['Mencontohi kegigihan dan kesabaran imam mazhab; mengamalkan ilmu; berwaspada meneliti sumber ilmu; menyebarkan ilmu dan kepakaran; menghormati perbezaan pandangan antara mazhab.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

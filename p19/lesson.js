@@ -52,3 +52,6 @@ review:[
  {h:'Faktor Kemerosotan',items:['Politik: monarki dan perebutan kuasa; pemberontakan Syiah dan Khawarij.','Akhlak: hidup mewah dan boros; keruntuhan moral.','Sosial: taksub kabilah; diskriminasi mawali.']},
  {h:'Iktibar',items:['Memartabatkan al-Quran dan al-Sunnah dalam kepimpinan.','Menjaga hubungan baik pemimpin dan rakyat.','Semangat jihad mempertahankan kedaulatan negara.','Menjaga kebajikan sesama rakan.','Mencontohi sifat mulia khalifah: zuhud, tegas, berilmu, bijaksana.','Meningkatkan ilmu pengetahuan.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

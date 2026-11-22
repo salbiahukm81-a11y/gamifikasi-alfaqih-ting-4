@@ -48,3 +48,6 @@ review:[
  {h:'Jenis Haji',items:['Ifrad: haji dahulu kemudian umrah.','Tamattu\': umrah dahulu dalam bulan haji kemudian haji.','Qiran: niat haji dan umrah serentak.']},
  {h:'Hikmah',items:['Rohani: menghapuskan dosa dan meraih ganjaran syurga; menzahirkan ketaatan.','Ekonomi: menabung dalam Tabung Haji; meningkatkan dana umat.','Politik: menzahirkan kekuatan umat Islam.','Sosial: saling mengenali walaupun berbeza bangsa dan negara.','Dakwah: menyemarakkan dakwah ke seluruh dunia.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

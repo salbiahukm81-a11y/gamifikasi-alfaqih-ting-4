@@ -57,3 +57,6 @@ review:[
  {h:'Kelebihan Berdikari',items:['Agama: Islam dipandang tinggi kerana umatnya rajin berusaha.','Ekonomi: sumber pendapatan yang diyakini halal.','Pendidikan: melahirkan modal insan berkepakaran tinggi.','Kemasyarakatan: memperkasakan daya saing masyarakat untuk mempertingkat taraf kehidupan.']},
  {h:'Pengajaran Hadis',items:['Memandang mulia kepada pekerjaan yang halal walaupun hasilnya sedikit.','Menghindari perbuatan meminta-minta dan bergantung pada orang lain demi memelihara kemuliaan dan maruah diri.','Mencari ilmu dan kemahiran untuk mendapatkan pendapatan yang lebih baik.','Membantu orang yang memerlukan pertolongan mengikut kemampuan agar hidup dirahmati.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

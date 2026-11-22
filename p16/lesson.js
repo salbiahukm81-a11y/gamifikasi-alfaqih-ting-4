@@ -56,3 +56,6 @@ review:[
  {h:'Akad',items:['Bahasa: ikatan, simpulan. Istilah: ijab dan qabul dalam urusan perniagaan dan kewangan.','Rukun: pihak berakad (penjual, pembeli); sesuatu yang diakadkan (barang, harga); sighah (ijab, qabul).','Syarat sighah: sepadan; tidak diikat dengan syarat; dalam satu pertemuan.']},
  {h:'Jenis Akad',items:['Pertukaran: jual beli, sewaan.','Kebajikan: hibah, qard, wakaf, wadi\'ah.','Perkongsian: musyarakah, mudharabah.','Agensi: wakalah.','Jaminan: kafalah, rahn.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();

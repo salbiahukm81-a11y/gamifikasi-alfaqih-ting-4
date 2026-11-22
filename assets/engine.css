@@ -72,7 +72,7 @@ a{color:var(--a)}
 .xpbar .t{display:flex;justify-content:space-between;font-weight:800;font-size:.95rem;color:var(--mut)}
 .bar{height:14px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;border:1px solid var(--line)}
 .bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b),var(--gold));transition:width .6s cubic-bezier(.2,.9,.3,1)}
-.missions{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.missions{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 @media(max-width:980px){.missions{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:520px){.missions{grid-template-columns:1fr}}
 .mis{position:relative;text-align:left;padding:18px;border-radius:20px;min-height:220px;display:flex;flex-direction:column;gap:6px;
@@ -260,3 +260,15 @@ a{color:var(--a)}
 .shTg{background:linear-gradient(135deg,#2AABEE,#1E88C7)!important;color:#fff!important}
 .btn.copied{background:linear-gradient(135deg,#2EE59D,#10B981)!important}
 .shNote{color:var(--mut);font-weight:600;font-size:.95rem;margin:14px 0 0}
+
+/* Team Battle */
+.mt{margin-top:14px}
+.tug{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.tm{font-weight:900;font-size:1.05rem;padding:10px 12px;border-radius:14px;display:flex;align-items:center;gap:8px;white-space:nowrap}
+.tm b{font-size:1.8rem}.tm.t0{background:rgba(255,77,109,.2);border:2px solid #FF4D6D}.tm.t1{background:rgba(56,189,248,.2);border:2px solid #38BDF8}
+.rope{flex:1;position:relative;height:16px;border-radius:9px;background:repeating-linear-gradient(45deg,#c79a5b 0 8px,#a87a3f 8px 16px)}
+.rope .mid{position:absolute;left:50%;top:-12px;bottom:-12px;width:3px;background:#fff;opacity:.7}
+.knot{position:absolute;top:50%;transform:translate(-50%,-50%);font-size:2rem;transition:left .6s cubic-bezier(.3,1.5,.5,1)}
+.turn{text-align:center;font-weight:900;font-size:1.25rem;padding:10px;border-radius:14px;margin-bottom:12px;background:color-mix(in srgb,var(--tc) 25%,transparent);border:2px solid var(--tc)}
+#qh .qcard{text-align:center}
+@media(max-width:560px){.tm{font-size:.8rem;padding:6px}.tm b{font-size:1.3rem}}

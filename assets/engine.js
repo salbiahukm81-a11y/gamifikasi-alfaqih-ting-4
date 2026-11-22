@@ -13,15 +13,15 @@ const DIFF={
   2:{time:20,opts:4,lives:3,bubT:11,preview:3000,mult:1.5,decoy:false},
   3:{time:13,opts:4,lives:3,bubT:8,preview:1500,mult:2,decoy:true},
 };
-const TYPE_LABEL={mcq:'Kuiz Pantas',tf:'Benar / Salah',sort:'Asingkan',order:'Susun Tertib',match:'Padan Kad',chain:'Sambung Ayat',bubble:'Pecah Gelembung',pick:'Pilih Tepat',boss:'Pertarungan Bos'};
-const TYPE_HOW={mcq:'Pilih jawapan yang tepat sebelum masa tamat.',tf:'Tentukan BENAR atau SALAH secepat mungkin.',sort:'Masukkan setiap kad ke kumpulan yang betul.',order:'Sentuh item mengikut tertib yang betul.',match:'Ingat kedudukan kad, kemudian padankan pasangannya.',chain:'Pilih sambungan bacaan yang betul.',bubble:'Pecahkan gelembung jawapan yang betul sebelum ia terlepas!',pick:'Pilih label yang tepat bagi setiap soalan.',boss:'Jawab dengan tepat untuk menumpaskan bos. Nyawa terhad!'};
+const TYPE_LABEL={mcq:'Kuiz Pantas',tf:'Benar / Salah',sort:'Asingkan',order:'Susun Tertib',match:'Padan Kad',chain:'Sambung Ayat',bubble:'Pecah Gelembung',pick:'Pilih Tepat',boss:'Pertarungan Bos',team:'Team Battle'};
+const TYPE_HOW={mcq:'Pilih jawapan yang tepat sebelum masa tamat.',tf:'Tentukan BENAR atau SALAH secepat mungkin.',sort:'Masukkan setiap kad ke kumpulan yang betul.',order:'Sentuh item mengikut tertib yang betul.',match:'Ingat kedudukan kad, kemudian padankan pasangannya.',chain:'Pilih sambungan bacaan yang betul.',bubble:'Pecahkan gelembung jawapan yang betul sebelum ia terlepas!',pick:'Pilih label yang tepat bagi setiap soalan.',boss:'Jawab dengan tepat untuk menumpaskan bos. Nyawa terhad!',team:'Mod kelas! Pasukan MERAH dan BIRU bergilir menjawab. Jawapan betul menarik tali ke arah pasukan anda. Jika salah, pasukan lawan boleh CURI jawapan!'};
 
 /* ---------- keadaan ---------- */
 const KEY='alfaqih_t4_'+L.id;
 const fresh=()=>({name:'',lv:2,st:L.stages.map(()=>({stars:0,score:0}))});
 let S=fresh();
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
-const load=()=>{try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&v.st&&v.st.length===L.stages.length)return v}catch(e){}return null};
+const load=()=>{try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&v.st&&v.st.length<=L.stages.length){while(v.st.length<L.stages.length)v.st.push({stars:0,score:0});return v}}catch(e){}return null};
 let sound=true;
 
 /* ---------- util ---------- */
@@ -131,7 +131,7 @@ $('bBack').onclick=()=>go('sMap');
 $('rvBody').innerHTML=(L.review||[]).map(sec=>`<h3>${esc(sec.h)}</h3>${sec.ar?`<div class="ar">${sec.ar}</div>`:''}${sec.ms?`<p style="font-weight:600">${esc(sec.ms)}</p>`:''}${sec.items?`<ul>${sec.items.map(i=>`<li>${i}</li>`).join('')}</ul>`:''}`).join('');
 
 /* ---------- peta ---------- */
-const unlocked=i=>i===0||S.st[i-1].stars>0;
+const unlocked=i=>i===0||S.st[i-1].stars>0||L.stages[i].type==='team';
 function renderMap(){
  $('missions').innerHTML=L.stages.map((g,i)=>{const st=S.st[i].stars,u=unlocked(i);return `<button class="mis ${st?'done':u?'open':'lock'}" data-i="${i}">
   ${u?'':'<span class="lockico">🔒</span>'}<div class="no">MISI ${i+1}</div><div class="ic">${g.emo}</div><div class="nm">${esc(g.name)}</div><div class="ty">${TYPE_LABEL[g.type]}</div>
@@ -188,7 +188,28 @@ function qHTML(q){return `<div class="qcard"><div class="q">${q.q.includes('<')?
 const take=(arr,n)=>shuf(arr).slice(0,Math.min(n,arr.length));
 const nQ=(g,def)=>({1:Math.min(8,g.data.length||def),2:Math.min(10,g.data.length||def),3:Math.min(12,g.data.length||def)}[S.lv]);
 
+
+/* ---------- Team Battle ---------- */
+function mk(q,n){const idxs=q.o.map((_,k)=>k);const wrong=shuf(idxs.filter(k=>k!==q.a)).slice(0,Math.max(1,Math.min(n,q.o.length)-1));const pick=shuf([q.a,...wrong]);return{...q,opts:pick.map(k=>q.o[k]),ans:pick.indexOf(q.a)}}
+const exOf=q=>q.ex?'<br>'+q.ex:'';const ansOf=it=>`Jawapan: <b>${arWrap(it.o[it.a])}</b>`;const NXT=m=>m?'Seterusnya ▶':'Lihat Keputusan 🏁';
+function ask(host,q,cfg){let it=mk(q,DIFF[S.lv].opts);if(cfg.drop){const keep=it.opts.filter(o=>!cfg.drop.includes(o)||o===q.o[q.a]);it={...it,opts:keep,ans:keep.indexOf(q.o[q.a])}}
+ host.innerHTML=(cfg.time?'<div class="timer" id="tm"><i></i></div>':'')+(cfg.pre||'')+qHTML(it)+optHTML(it);let left=()=>0,done=false;
+ const fin=ch=>{if(done)return;done=true;if(cfg.time)stopTimer();host.querySelectorAll('[data-o]').forEach(b=>{b.disabled=true;const v=+b.dataset.o;if(v===it.ans)b.classList.add('ok');else if(v===ch)b.classList.add('no')});cfg.onDone(ch===it.ans,left(),ch,it)};
+ host.querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>fin(+b.dataset.o));if(cfg.time)left=startTimer(cfg.time,()=>fin(-1));return it}
+function teamBattle(g,idx){const d=DIFF[S.lv];const sc=Score();const Q=take(g.data,{1:8,2:10,3:12}[S.lv]);const T=[{n:'MERAH',e:'🔴',c:'#FF4D6D',s:0},{n:'BIRU',e:'🔵',c:'#38BDF8',s:0}];let i=0,pos=0;const MAX=Math.ceil(Q.length/2);
+ const rope=()=>`<div class="tug"><div class="tm t0">${T[0].e} ${T[0].n}<b id="s0">${T[0].s}</b></div><div class="rope"><div class="mid"></div><div class="knot" id="knot" style="left:${50+pos/MAX*42}%">🎗️</div></div><div class="tm t1"><b id="s1">${T[1].s}</b>${T[1].n} ${T[1].e}</div></div>`;
+ function draw(){const t=i%2;const q=Q[i];$('play').innerHTML=head(`${g.emo} Soalan ${i+1}/${Q.length}`)+rope()+`<div class="turn" style="--tc:${T[t].c}">GILIRAN: ${T[t].e} PASUKAN ${T[t].n}</div><div id="qh"></div><div class="fb" id="fb"></div>`;sc.ui();setPg(i,Q.length);
+  ask($('qh'),q,{time:d.time,onDone:(r,left,ch,it)=>{if(r){sc.hit(left,d.time);pull(t);fbShow(true,`✅ <b>${T[t].e} ${T[t].n} betul!</b> Tali ditarik!${exOf(q)}`,nxt,NXT(i+1<Q.length),q.ex?2600:1500);return}
+   sc.miss();const o=1-t;if(ch<0||it.opts.length<3){fbShow(false,`${ch<0?'⏰ <b>Masa tamat!</b>':'❌ <b>Salah.</b>'} ${ansOf(it)}${exOf(q)}`,nxt,NXT(i+1<Q.length));return}
+   const f=$('fb');f.className='fb on bad';f.innerHTML=`❌ <b>${T[t].n} salah!</b><div class="row mt"><button class="btn gold sm" id="steal">${T[o].e} ${T[o].n} – CURI JAWAPAN!</button><button class="btn ghost sm" id="nosteal">Langkau ▶</button></div>`;
+   $('steal').onclick=()=>{f.className='fb';ask($('qh'),q,{time:Math.max(8,d.time-6),drop:[it.opts[ch]],pre:`<div class="turn" style="--tc:${T[o].c}">⚡ CURI: ${T[o].e} PASUKAN ${T[o].n}</div>`,onDone:(r2,l2,c2,it2)=>{if(r2){pull(o);sfx('combo');toast('⚡ CURI BERJAYA!','#FFC83D');fbShow(true,`⚡ <b>${T[o].n} berjaya mencuri!</b>${exOf(q)}`,nxt,NXT(i+1<Q.length),2400)}else{sfx('no');fbShow(false,`❌ Curi gagal. ${ansOf(it2)}${exOf(q)}`,nxt,NXT(i+1<Q.length))}}})};
+   $('nosteal').onclick=nxt}})}
+ function pull(t){T[t].s++;pos+=t?1:-1;pos=Math.max(-MAX,Math.min(MAX,pos));$('knot').style.left=(50+pos/MAX*42)+'%';$('s0').textContent=T[0].s;$('s1').textContent=T[1].s;sfx('hit')}
+ function nxt(){i++;if(i<Q.length)draw();else{const w=T[0].s===T[1].s?'⚖️ SERI':`🏆 ${T[T[0].s>T[1].s?0:1].e} ${T[T[0].s>T[1].s?0:1].n} MENANG`;confetti(120);result(idx,sc,sc.ok/Q.length,`${w} ${T[0].s}–${T[1].s}`)}}
+ draw()}
+
 const RUN={
+ team(g,i){teamBattle(g,i)},
  mcq(g,i){const d=DIFF[S.lv];quiz(g,i,{qs:mcqItems(take(g.data,nQ(g)),d),render:q=>qHTML(q)+optHTML(q)})},
  boss(g,i){const d=DIFF[S.lv];quiz(g,i,{boss:true,lives:d.lives,qs:mcqItems(take(g.data,10),d),render:q=>qHTML(q)+optHTML(q)})},
  tf(g,i){quiz(g,i,{ring:true,qs:take(g.data,nQ(g)).map(x=>({...x,ans:x.a?0:1})),render:q=>`<div class="scroll">${esc(q.t)}</div><div class="big2"><button class="bigb t" data-o="0"><span class="e">✔</span>BENAR</button><button class="bigb f" data-o="1"><span class="e">✖</span>SALAH</button></div>`})},
@@ -257,5 +278,5 @@ function showCert(){go('sCert');$('cN').textContent=S.name;$('cR').textContent=r
 function renderLb(){let lb=[];try{lb=JSON.parse(localStorage.getItem(KEY+'_lb')||'[]')}catch(e){}
  $('lbBody').innerHTML=lb.length?lb.map((r,i)=>`<tr><td>${['🥇','🥈','🥉'][i]||i+1}</td><td><b>${esc(r.n)}</b></td><td>Level ${r.l}</td><td>${r.s}</td><td><b>${r.p}</b></td></tr>`).join(''):'<tr><td colspan="5">Belum ada juara. Tamatkan semua misi untuk tersenarai!</td></tr>'}
 window.__G={go,S:()=>S,setS:v=>{S=v},showCert,renderMap};
-const shs=document.createElement('script');shs.src='../assets/share.js?v=1795306073';document.body.appendChild(shs);
+const shs=document.createElement('script');shs.src='../assets/share.js?v=1795311219';document.body.appendChild(shs);
 })();

@@ -63,3 +63,6 @@ review:[
  {h:'Pencapaian',items:['Agama, ekonomi, politik, sosial, ketenteraan dan pendidikan – lihat misi “Bilik Pencapaian”.']},
  {h:'Iktibar',items:['Mencontohi kepimpinan khalifah yang mengutamakan kesejahteraan agama, rakyat dan negara.','Mengukuhkan perpaduan umat dengan memelihara hak.','Mengamalkan akhlak terpuji.','Menyokong kegiatan ekonomi umat Islam.','Menyumbang kepakaran untuk pembangunan negara.','Menggiatkan usaha dakwah.']}]
 };
+
+/* Misi 6: Team Battle (mod kelas) */
+(function(){var b=LESSON.stages.find(function(s){return s.type==='boss'});LESSON.stages.push({type:'team',emo:'⚔️',name:'Pertandingan Pasukan',badge:'Juara Pasukan',brief:'Mod kelas! Bahagikan kelas kepada Pasukan MERAH dan BIRU. Pasukan bergilir menjawab – jawapan betul menarik tali, jawapan salah boleh dicuri lawan!',data:b.data});})();
